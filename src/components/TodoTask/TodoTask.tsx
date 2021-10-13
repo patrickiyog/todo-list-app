@@ -1,5 +1,5 @@
 import React from 'react';
-import { Task } from '../Interfaces';
+import { Task } from '../../Interfaces';
 import './TodoTask.css';
 
 interface Props {
