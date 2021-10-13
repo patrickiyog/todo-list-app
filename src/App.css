@@ -11,50 +11,6 @@ body {
   height: 100vh;
 }
 
-.header {
-  flex: 30%;
-  background-color: tomato;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-container input {
-  margin: 3px 0px;
-  padding: 10px;
-  width: 400px;
-  border: none;
-  border-radius: 5px;
-}
-
-.input-container input:focus {
-  outline: none;
-}
-
-.header .button-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.header button {
-  margin-left: 8px;
-  padding: 10px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.header button:hover {
-  background-color: rgb(211, 211, 211);
-}
-
 .todo-list {
   margin: 50px;
   flex: 70%;

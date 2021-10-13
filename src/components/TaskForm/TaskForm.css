@@ -15,8 +15,9 @@
   
   .input-container input {
     margin: 3px 0px;
-    padding: 10px;
+    padding: 16px;
     width: 400px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
   }
@@ -32,7 +33,8 @@
   
   .header button {
     margin-left: 8px;
-    padding: 10px 12px;
+    padding: 16px 12px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
