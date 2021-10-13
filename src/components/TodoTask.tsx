@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Task } from '../Interfaces';
 import './TodoTask.css';
 
@@ -11,7 +11,6 @@ const TodoTask = ({ task }: Props) => {
         <div className="task">
             <div className="task-content">
                 <span>{task.taskName}</span>
-                <span>due in {task.deadline} days</span>
             </div>
             <button>X</button>
         </div>

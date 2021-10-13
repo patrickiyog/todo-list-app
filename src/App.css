@@ -16,7 +16,7 @@ body {
   background-color: tomato;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -29,7 +29,7 @@ body {
 .input-container input {
   margin: 3px 0px;
   padding: 10px;
-  width: 200px;
+  width: 400px;
   border: none;
   border-radius: 5px;
 }
@@ -44,8 +44,8 @@ body {
 }
 
 .header button {
-  margin: 3px 0px;
-  padding: 8px 12px;
+  margin-left: 8px;
+  padding: 10px 12px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -56,6 +56,7 @@ body {
 }
 
 .todo-list {
+  margin: 50px;
   flex: 70%;
   width: 100%;
   display: flex;

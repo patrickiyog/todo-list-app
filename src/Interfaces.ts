@@ -1,4 +1,4 @@
 export interface Task {
     taskName: string;
-    deadline: number;
+    completed: boolean;
 }
