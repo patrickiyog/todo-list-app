@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { TaskContext } from './context/TaskContext';
 import './App.css';
-import TaskForm from './components/TaskForm/TaskForm';
 import { Task } from './interfaces/Task';
+import TaskForm from './components/TaskForm/TaskForm';
+import TaskList from './components/TaskList/TaskList';
 
 const App: React.FC = () => {
 
@@ -12,6 +13,7 @@ const App: React.FC = () => {
     <div className="App">
       <TaskContext.Provider value={{ tasks, setTasks }}>
         <TaskForm />
+        <TaskList />
       </TaskContext.Provider>
     </div>
   );

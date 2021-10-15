@@ -1,12 +1,12 @@
 import React from 'react';
 import { Task } from '../../interfaces/Task';
-import './TodoTask.css';
+import './TaskItem.css';
 
 interface Props {
     task: Task;
 }
 
-const Task = ({ task }: Props) => {
+const TaskItem = ({ task }: Props) => {
     return (
         <div className="task">
             <div className="task-content">
@@ -17,4 +17,4 @@ const Task = ({ task }: Props) => {
     );
 }
 
-export default Task;
+export default TaskItem;
