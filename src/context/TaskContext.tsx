@@ -3,7 +3,7 @@ import { Task } from "../interfaces/Task";
 
 export type Tasks = {
     tasks: Task[];
-    setTasks: (task: Task) => void;
+    setTasks: (tasks: Task[]) => void;
 }
 
 export const TaskContext = createContext<Tasks>({
