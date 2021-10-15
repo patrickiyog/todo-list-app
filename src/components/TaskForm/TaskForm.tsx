@@ -1,17 +1,26 @@
 import React, { useState, ChangeEvent } from 'react';
 import './TaskForm.css';
+import { useTaskContext } from '../../context/TaskContext';
+import { v4 as uuidv4 } from 'uuid';
 
 const TaskForm = () => {
 
     const [task, setTask] = useState<string>("");
+
+    const { tasks, setTasks } = useTaskContext();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setTask(event.target.value);
     }
 
     const addTask = (): void => {
-        // const newTask = { taskName: task, completed: false };
-        // Add newTask to a todo list state
+        const id = uuidv4();
+        const newTask = {
+            id: id,
+            taskName: task,
+            completed: false
+        };
+        setTasks([...tasks, newTask]);
         setTask("");
     }
 
