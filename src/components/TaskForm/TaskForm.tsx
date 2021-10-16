@@ -15,7 +15,7 @@ const TaskForm = () => {
     }
 
     const addTask = (event: KeyboardEvent): void => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && /\S/.test(task)) {
             const id = uuidv4();
             const newTask = {
                 id: id,

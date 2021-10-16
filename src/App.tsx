@@ -10,12 +10,16 @@ const App: React.FC = () => {
   const [tasks, setTasks] = React.useState<Task[]>([]);
 
   return (
-    <div className="App">
-      <TaskContext.Provider value={{ tasks, setTasks }}>
-        <TaskList />
-        <TaskForm />
-      </TaskContext.Provider>
-    </div>
+    <TaskContext.Provider value={{ tasks, setTasks }}>
+      <div className="App">
+        <div className="side">Left</div>
+        <div className="center">
+          <TaskList />
+          <TaskForm />
+        </div>
+        <div className="side">Right</div>
+      </div>
+    </TaskContext.Provider>
   );
 
 }
