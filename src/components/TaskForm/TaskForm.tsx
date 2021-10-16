@@ -1,6 +1,7 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './TaskForm.css';
 import { useTaskContext } from '../../context/TaskContext';
+import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 
 const TaskForm = () => {
@@ -13,31 +14,36 @@ const TaskForm = () => {
         setTask(event.target.value);
     }
 
-    const addTask = (): void => {
-        const id = uuidv4();
-        const newTask = {
-            id: id,
-            taskName: task,
-            completed: false
-        };
-        setTasks([...tasks, newTask]);
-        setTask("");
+    const addTask = (event: KeyboardEvent): void => {
+        if (event.key === 'Enter') {
+            const id = uuidv4();
+            const newTask = {
+                id: id,
+                taskName: task,
+                completed: false
+            };
+            setTasks([...tasks, newTask]);
+            setTask("");
+        }
     }
 
     return (
-        <div className="header">
-            <div className="input-container">
-                <input
-                    type="text"
-                    name="task"
-                    placeholder="What do you need to do?"
-                    value={task}
-                    onChange={handleChange}
-                    autoComplete="off"
-                />
-            </div>
-            <div className="button-container">
-                <button onClick={addTask}>Add Task</button>
+        <div className="task-form">
+            <div className="task-form-container">
+                <div className="icon-container">
+                    <MdAdd />
+                </div>
+                <div className="input-container">
+                    <input
+                        type="text"
+                        name="task"
+                        placeholder="Add New Task"
+                        value={task}
+                        onChange={handleChange}
+                        onKeyDown={addTask}
+                        autoComplete="off"
+                    />
+                </div>
             </div>
         </div>
     );

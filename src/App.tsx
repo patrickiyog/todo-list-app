@@ -12,8 +12,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <TaskContext.Provider value={{ tasks, setTasks }}>
-        <TaskForm />
         <TaskList />
+        <TaskForm />
       </TaskContext.Provider>
     </div>
   );
