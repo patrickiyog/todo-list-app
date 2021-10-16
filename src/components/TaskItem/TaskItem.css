@@ -1,36 +1,28 @@
 .task {
-    width: 500px;
     height: 50px;
     display: flex;
     align-items: center;
+    padding: 0px 10px;
+    border-radius: 5px;
+    background-color: #ebebeb;
+    margin: 5px 0px;
 }
 
 .task .task-content {
-    flex: 80%;
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.task .task-content span {
-    display: grid;
-    place-items: center;
-    border: 1px solid white;
-    width: 100%;
-    height: 100%;
-    font-size: 18px;
-    background-color: tomato;
-    color: white;
+.task-content .task-name {
+    width: 95%;
 }
 
-.task button {
-    margin: 10px;
-    height: 30px;
-    width: 30px;
-    border-radius: 100px;
-    cursor: pointer;
-    border: none;
-    color: white;
-    background-color: steelblue;
+.task-content .task-completed {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    width: 5%;
 }

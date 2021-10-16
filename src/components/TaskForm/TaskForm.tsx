@@ -22,7 +22,7 @@ const TaskForm = () => {
                 taskName: task,
                 completed: false
             };
-            setTasks([...tasks, newTask]);
+            setTasks([newTask, ...tasks]);
             setTask("");
         }
     }

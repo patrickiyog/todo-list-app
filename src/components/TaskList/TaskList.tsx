@@ -9,7 +9,7 @@ const TaskList = () => {
 
     return (
         <div className="task-list-container">
-            {tasks.map((task, index) => <TaskItem task={task} />)}
+            {tasks.map((task, index) => <TaskItem key={index} task={task} />)}
         </div>
     );
 
