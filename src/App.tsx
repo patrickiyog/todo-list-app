@@ -15,7 +15,6 @@ const App: React.FC = () => {
         <div className="left-side">Left</div>
         <div className="center">
           <TaskList />
-          <TaskForm />
         </div>
         <div className="right-side">Right</div>
       </div>

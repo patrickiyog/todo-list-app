@@ -1,13 +1,19 @@
 .task-list {
   display: flex;
   flex-direction: column;
-  height: 85vh;
+  height: 100vh;
   margin: 12px;
 }
 
 .task-list-name {
-  margin: 12px 0px;
   font-size: 24px;
+}
+
+.task-list-details {
+  margin: 5px 0px;
+  font-size: 16px;
+  font-style: italic;
+  opacity: 40%;
 }
 
 .task-list-list {
