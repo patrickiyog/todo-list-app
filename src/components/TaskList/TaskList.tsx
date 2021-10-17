@@ -8,9 +8,13 @@ const TaskList = () => {
     const { tasks } = useTaskContext();
 
     return (
-        <div className="task-list-container">
-            {tasks.map((task, index) => <TaskItem key={index} task={task} />)}
+        <div className="task-list">
+            <div className="task-list-name">Task List Name</div>
+            <div className="task-list-list">
+                {tasks.map((task, index) => <TaskItem key={index} task={task} />)}
+            </div>
         </div>
+
     );
 
 }

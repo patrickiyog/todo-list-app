@@ -11,14 +11,15 @@ body {
   height: 100vh;
 }
 
-.side {
+.left-side {
   width: 25vw;
-  background-color: #e0e0e0;
+  background-color: #1976d2;
 }
 
 .center {
   display: flex;
   flex-direction: column;
   width: 50vw;
-  background-color: #1976d2;
+  background-color: #fafafa;
+
 }

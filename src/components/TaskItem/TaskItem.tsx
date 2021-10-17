@@ -27,12 +27,15 @@ const TaskItem = ({ task }: Props) => {
     return (
         <div className="task">
             <div className="task-content">
+                <div className="task-completed" onClick={completeTask}>
+                    {completed ?
+                        <MdOutlineCheckBox className="completed-true" /> :
+                        <MdOutlineCheckBoxOutlineBlank className="completed-false" />
+                    }
+                </div>
                 <span className="task-name">
                     {task.taskName}
                 </span>
-                <div className="task-completed" onClick={completeTask}>
-                    {completed ? <MdOutlineCheckBox /> : <MdOutlineCheckBoxOutlineBlank />}
-                </div>
             </div>
         </div>
     );

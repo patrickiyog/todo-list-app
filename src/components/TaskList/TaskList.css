@@ -1,7 +1,15 @@
-.task-list-container {
-    display: flex;
-    flex-direction: column;
-    height: 600px;
-    margin: 10px;
-    overflow: scroll;
-  }
+.task-list {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  margin: 12px;
+}
+
+.task-list-name {
+  margin: 12px 0px;
+  font-size: 24px;
+}
+
+.task-list-list {
+  overflow-y: scroll;
+}

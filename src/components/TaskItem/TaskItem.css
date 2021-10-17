@@ -1,5 +1,5 @@
 .task {
-    height: 50px;
+    min-height: 50px;
     display: flex;
     align-items: center;
     padding: 0px 10px;
@@ -9,7 +9,6 @@
 }
 
 .task .task-content {
-    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -23,6 +22,17 @@
 .task-content .task-completed {
     display: flex;
     justify-content: center;
+    margin-right: 10px;
     font-size: 24px;
     width: 5%;
+    cursor: pointer;
 }
+
+.task-completed .completed-false {
+    color: #8d8d8d;
+}
+
+.task-completed .completed-true {
+    color: #00c853;
+}
+
