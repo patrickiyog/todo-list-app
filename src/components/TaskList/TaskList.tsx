@@ -30,7 +30,9 @@ const TaskList = () => {
                 <TaskForm />
             </div>
             <div className="task-list-list">
-                {tasks.map((task, index) => <TaskItem key={index} task={task} />)}
+                <div className="task-list-list-content">
+                    {tasks.map((task, index) => <TaskItem key={index} task={task} />)}
+                </div>
             </div>
         </div>
 

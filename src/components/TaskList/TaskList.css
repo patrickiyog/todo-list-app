@@ -16,6 +16,17 @@
   opacity: 40%;
 }
 
-.task-list-list {
-  overflow-y: scroll;
+.task-list-list{
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.task-list-list-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
 }
