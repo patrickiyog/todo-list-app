@@ -1,17 +1,21 @@
 import React from 'react';
 import './TaskLists.css';
-import Logo from '../Logo/Logo';
+import { MdAdd } from "react-icons/md";
 import TaskListItem from '../TaskListItem/TaskListItem';
 
 const TaskLists = () => {
 
     return (
         <div className="task-lists">
-            <div className="logo-container"> 
-                <Logo />
-            </div>
             <div className="task-list-item-container">
-                <TaskListItem />
+                <div>
+                    <div>
+                        <MdAdd />
+                    </div>
+                    <div>
+                        Create a task list
+                    </div>
+                </div>
             </div>
         </div>
     );

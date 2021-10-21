@@ -16,6 +16,15 @@ body {
   background-color: #212121;
 }
 
+.left-side-content {
+  height: 100%;
+  margin: 16px;
+}
+
+.left-side-content #logo {
+  padding: 0px 0px 16px 0px;
+}
+
 .center {
   display: flex;
   flex-direction: column;

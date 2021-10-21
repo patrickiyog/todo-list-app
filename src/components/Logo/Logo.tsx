@@ -8,7 +8,7 @@ const Logo = () => {
         <div className="logo">
             <div className="app-logo">
                 <BsFillPencilFill className="app-logo-icon" />
-                <div className="app-logo-name">Todo List App</div>
+                <div className="app-logo-name">Promenade</div>
             </div>
         </div>
     );

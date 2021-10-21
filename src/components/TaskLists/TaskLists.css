@@ -1,8 +1,19 @@
 .task-lists {
     width: 100%;
-    margin: 20px;
 }
 
-.logo-container {
-    margin: 20px 0px;
+.task-list-item-container button {
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    width: 100%;
+    font-size: 18px;
+    color: #FFFFFF;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.task-list-item-container input:focus {
+    outline: none;
 }
