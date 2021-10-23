@@ -1,12 +1,16 @@
 import React from 'react';
 import './TaskList.css';
-import { useTaskContext } from '../../context/TaskContext';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
+import { TaskList } from '../../interfaces/TaskList';
 
-const TaskList = () => {
+interface Props {
+    taskList: TaskList;
+}
 
-    const { tasks } = useTaskContext();
+const DisplayTaskList = ({ taskList }: Props) => {
+
+    const { taskListId, taskListName, tasks } = taskList;
 
     const countCompletedTasks = (): number => {
         let count: number = 0;
@@ -21,17 +25,19 @@ const TaskList = () => {
     return (
         <div className="task-list">
             <div>
-                <div className="task-list-name">Task List Name</div>
+                <div className="task-list-name">{taskListName}</div>
                 <div className="task-list-details">
                     {!tasks.length ? 'No tasks' : `${tasks.length} tasks, ${countCompletedTasks()} completed`}
                 </div>
             </div>
             <div>
-                <TaskForm />
+                <TaskForm taskListId={taskListId} />
             </div>
             <div className="task-list-list">
                 <div className="task-list-list-content">
-                    {tasks.map((task, index) => <TaskItem key={index} task={task} />)}
+                    {tasks.map((task, index) =>
+                        <TaskItem key={index} taskListId={taskListId} task={task} />
+                    )}
                 </div>
             </div>
         </div>
@@ -40,4 +46,4 @@ const TaskList = () => {
 
 }
 
-export default TaskList;
+export default DisplayTaskList;

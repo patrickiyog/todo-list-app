@@ -6,9 +6,9 @@ export type TaskLists = {
     setTaskLists: (taskList: TaskList[]) => void;
 };
 
-export const TaskListContext = createContext<TaskLists>({
+export const TaskListsContext = createContext<TaskLists>({
     taskLists: [],
     setTaskLists: () => { },
 });
 
-export const useTaskContext = () => useContext(TaskListContext);
+export const useTaskListsContext = () => useContext(TaskListsContext);

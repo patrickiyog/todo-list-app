@@ -1,29 +1,38 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './TaskForm.css';
-import { useTaskContext } from '../../context/TaskContext';
+import { useTaskListsContext } from '../../context/TaskListsContext';
 import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 
-const TaskForm = () => {
+interface Props {
+    taskListId: string;
+}
 
-    const [task, setTask] = useState<string>("");
+const TaskForm = ({ taskListId }: Props) => {
 
-    const { tasks, setTasks } = useTaskContext();
+    const [taskName, setTaskName] = useState<string>("");
+
+    const { taskLists, setTaskLists } = useTaskListsContext();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-        setTask(event.target.value);
+        setTaskName(event.target.value);
     }
 
     const addTask = (event: KeyboardEvent): void => {
-        if (event.key === 'Enter' && /\S/.test(task)) {
+        if (event.key === 'Enter' && /\S/.test(taskName)) {
             const id = uuidv4();
             const newTask = {
-                id: id,
-                taskName: task,
+                taskId: id,
+                taskName: taskName,
                 completed: false
             };
-            setTasks([newTask, ...tasks]);
-            setTask("");
+            const newTaskList = [...taskLists];
+            for (const taskList of newTaskList) {
+                if (taskList.taskListId === taskListId) {
+                    taskList.tasks.push(newTask);
+                    setTaskLists(newTaskList);
+                }
+            }
         }
     }
 
@@ -38,7 +47,7 @@ const TaskForm = () => {
                         type="text"
                         name="task"
                         placeholder="Add New Task"
-                        value={task}
+                        value={taskName}
                         onChange={handleChange}
                         onKeyDown={addTask}
                         autoComplete="off"

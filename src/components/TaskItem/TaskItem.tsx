@@ -1,31 +1,48 @@
 import React from 'react';
 import { Task } from '../../interfaces/Task';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdOutlineRemoveCircleOutline } from "react-icons/md";
-import { useTaskContext } from '../../context/TaskContext';
+import { useTaskListsContext } from '../../context/TaskListsContext';
 import './TaskItem.css';
 
 interface Props {
+    taskListId: string;
     task: Task;
 }
 
-const TaskItem = ({ task }: Props) => {
+const TaskItem = ({ taskListId, task }: Props) => {
 
-    const { tasks, setTasks } = useTaskContext();
+    const { taskId, completed } = task;
 
-    const { id, completed } = task;
+    const { taskLists, setTaskLists } = useTaskListsContext();
 
     const completeTask = (): void => {
-        const newTasks = [...tasks];
-        for (const task of newTasks) {
-            if (task.id === id) {
-                task.completed = !completed;
+        const newTaskList = [...taskLists]
+        for (const taskList of newTaskList) {
+            if (taskList.taskListId === taskListId) {
+                const newTasks = [...taskList.tasks];
+                for (const task of newTasks) {
+                    if (task.taskId === taskId) {
+                        task.completed = !completed;
+                        setTaskLists(newTaskList);
+                    }
+                }
+                break;
             }
         }
-        setTasks(newTasks);
     }
 
     const removeTask = (): void => {
-        setTasks(tasks.filter(task => task.id !== id));
+        const newTaskList = [...taskLists]
+        for (const taskList of newTaskList) {
+            if (taskList.taskListId === taskListId) {
+                const newTasks = taskList.tasks.filter(task =>
+                    task.taskId !== taskId
+                );
+                taskList.tasks = newTasks;
+                setTaskLists(newTaskList);
+                break;
+            }
+        }
     }
 
     return (
@@ -40,8 +57,8 @@ const TaskItem = ({ task }: Props) => {
                 <span className="task-name">
                     {task.taskName}
                 </span>
-                <div className="task-remove" onClick={removeTask}>
-                    <MdOutlineRemoveCircleOutline />
+                <div className="task-remove" >
+                    <MdOutlineRemoveCircleOutline onClick={removeTask} />
                 </div>
             </div>
         </div>
