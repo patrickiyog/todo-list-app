@@ -1,0 +1,35 @@
+.task-lists {
+    width: 100%;
+}
+
+.task-list-item-container {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.task-list-item-container .icon {
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+.task-list-item-container input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.task-list-item-container input::placeholder {
+    font-weight: 500;
+    opacity: 1;
+}
+
+.task-list-item-container input:focus {
+    outline: none;
+}
