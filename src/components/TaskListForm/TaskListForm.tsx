@@ -36,7 +36,7 @@ const TaskListForm = () => {
                     value={taskListName}
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
-                    maxLength={26}
+                    maxLength={20}
                 />
             </div>
         </div>

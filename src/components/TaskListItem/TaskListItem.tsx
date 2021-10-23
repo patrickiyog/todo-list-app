@@ -1,12 +1,17 @@
 import React from 'react';
 import './TaskListItem.css';
 
-const TaskListItem = () => {
+interface Props {
+    taskListId: string;
+    taskListName: string;
+}
+
+const TaskListItem = ({ taskListId, taskListName }: Props) => {
 
     return (
         <div className="task-list-item">
             <div>
-                Task List Item
+                {taskListName}
             </div>
         </div>
     );
