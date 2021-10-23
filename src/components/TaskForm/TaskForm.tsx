@@ -42,6 +42,7 @@ const TaskForm = () => {
                         onChange={handleChange}
                         onKeyDown={addTask}
                         autoComplete="off"
+                        maxLength={60}
                     />
                 </div>
             </div>

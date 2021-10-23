@@ -36,3 +36,10 @@
     color: #00c853;
 }
 
+.task-remove {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #e53935;
+    cursor: pointer;
+}

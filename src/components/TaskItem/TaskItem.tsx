@@ -1,6 +1,6 @@
 import React from 'react';
 import { Task } from '../../interfaces/Task';
-import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
+import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { useTaskContext } from '../../context/TaskContext';
 import './TaskItem.css';
 
@@ -24,6 +24,10 @@ const TaskItem = ({ task }: Props) => {
         setTasks(newTasks);
     }
 
+    const removeTask = (): void => {
+        setTasks(tasks.filter(task => task.id !== id));
+    }
+
     return (
         <div className="task">
             <div className="task-content">
@@ -36,6 +40,9 @@ const TaskItem = ({ task }: Props) => {
                 <span className="task-name">
                     {task.taskName}
                 </span>
+                <div className="task-remove" onClick={removeTask}>
+                    <MdOutlineRemoveCircleOutline />
+                </div>
             </div>
         </div>
     );
