@@ -11,17 +11,19 @@ const App: React.FC = () => {
 
   return (
     <TaskContext.Provider value={{ tasks, setTasks }}>
-      <div className="App">
-        <div className="left-side">
-          <div className="left-side-content">
-            <TaskListForm />
-            <hr />
+      <div className="app">
+        <div className="app-container">
+          <div className="left-side">
+            <div className="left-side-content">
+              <TaskListForm />
+              <hr />
+            </div>
           </div>
+          <div className="center">
+            <TaskList />
+          </div>
+          <div className="right-side"></div>
         </div>
-        <div className="center">
-          <TaskList />
-        </div>
-        <div className="right-side">Right</div>
       </div>
     </TaskContext.Provider>
   );
