@@ -30,7 +30,9 @@ const TaskListForm = () => {
     return (
         <div className="task-lists">
             <div className="task-list-item-container">
-                <MdAdd className="icon" />
+                <div className="icon-container">
+                    <MdAdd />
+                </div>
                 <input
                     placeholder="Create a task list"
                     value={taskListName}

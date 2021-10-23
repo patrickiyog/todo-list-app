@@ -30,7 +30,6 @@ const App: React.FC = () => {
             </div>
           </div>
           <div className="center">
-            No tasks
           </div>
           <div className="right-side"></div>
         </div>
