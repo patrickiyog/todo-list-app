@@ -3,6 +3,8 @@ import './TaskForm.css';
 import { useTaskListsContext } from '../../context/TaskListsContext';
 import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
+import { Task } from '../../interfaces/Task';
+import { TaskList } from '../../interfaces/TaskList';
 
 interface Props {
     taskListId: string;
@@ -20,13 +22,12 @@ const TaskForm = ({ taskListId }: Props) => {
 
     const addTask = (event: KeyboardEvent): void => {
         if (event.key === 'Enter' && /\S/.test(taskName)) {
-            const id = uuidv4();
-            const newTask = {
-                taskId: id,
+            const newTask: Task = {
+                taskId: uuidv4(),
                 taskName: taskName,
                 completed: false
             };
-            const newTaskList = [...taskLists];
+            const newTaskList: TaskList[] = [...taskLists];
             for (const taskList of newTaskList) {
                 if (taskList.taskListId === taskListId) {
                     taskList.tasks.push(newTask);

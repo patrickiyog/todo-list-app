@@ -1,19 +1,29 @@
-import React, { useState, ChangeEvent, KeyboardEvent} from 'react';
+import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './TaskListForm.css';
+import { useTaskListsContext } from '../../context/TaskListsContext';
+import { TaskList } from '../../interfaces/TaskList';
 import { MdAdd } from "react-icons/md";
+import { v4 as uuidv4 } from 'uuid';
 
 const TaskListForm = () => {
 
-    const [taskList, setTaskList] = useState<string>('');
+    const [taskListName, setTaskListName] = useState<string>('');
+
+    const { taskLists, setTaskLists } = useTaskListsContext();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-        setTaskList(event.target.value);
+        setTaskListName(event.target.value);
     }
 
     const handleKeyDown = (event: KeyboardEvent): void => {
-        if(event.key === 'Enter') {
-            console.log('task list created');
-            setTaskList('');
+        if (event.key === 'Enter' && /\S/.test(taskListName)) {
+            const newTaskList: TaskList = {
+                taskListId: uuidv4(),
+                taskListName: taskListName,
+                tasks: [],
+            };
+            setTaskLists([newTaskList, ...taskLists]);
+            setTaskListName('');
         }
     }
 
@@ -23,7 +33,7 @@ const TaskListForm = () => {
                 <MdAdd className="icon" />
                 <input
                     placeholder="Create a task list"
-                    value={taskList}
+                    value={taskListName}
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
                     maxLength={26}
