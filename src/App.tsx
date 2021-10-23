@@ -22,7 +22,6 @@ const App: React.FC = () => {
                   taskLists.map(taskList =>
                     <TaskListItem
                       key={taskList.taskListId}
-                      taskListId={taskList.taskListId}
                       taskListName={taskList.taskListName}
                     />
                   )
