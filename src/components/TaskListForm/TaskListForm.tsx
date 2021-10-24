@@ -39,7 +39,7 @@ const TaskListForm = ({ setSelectedTaskList }: Props) => {
                     <MdAdd />
                 </div>
                 <input
-                    placeholder="Create a task list here..."
+                    placeholder="Create a task list"
                     value={taskListName}
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}

@@ -25,7 +25,8 @@ const TaskForm = ({ taskListId }: Props) => {
             const newTask: Task = {
                 taskId: uuidv4(),
                 taskName: taskName,
-                completed: false
+                completed: false,
+                subTasks: [],
             };
             const newTaskLists: TaskList[] = [...taskLists];
             for (const taskList of newTaskLists) {
@@ -48,7 +49,7 @@ const TaskForm = ({ taskListId }: Props) => {
                     <input
                         type="text"
                         name="task"
-                        placeholder="Add New Task"
+                        placeholder="Add a new task"
                         value={taskName}
                         onChange={handleChange}
                         onKeyDown={addTask}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Task } from '../../interfaces/Task';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { useTaskListsContext } from '../../context/TaskListsContext';
@@ -7,9 +7,10 @@ import './TaskItem.css';
 interface Props {
     taskListId: string;
     task: Task;
+    setSelectedTask: Dispatch<SetStateAction<Task | null>>;
 }
 
-const TaskItem = ({ taskListId, task }: Props) => {
+const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
 
     const { taskId, completed } = task;
 
@@ -45,8 +46,12 @@ const TaskItem = ({ taskListId, task }: Props) => {
         }
     }
 
+    const handleTaskOnClick = (): void => {
+        setSelectedTask(task);
+    }
+
     return (
-        <div className="task">
+        <div className="task" onClick={handleTaskOnClick}>
             <div className="task-content">
                 <div className="task-completed" onClick={completeTask}>
                     {completed ?
