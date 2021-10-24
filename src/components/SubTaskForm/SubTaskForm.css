@@ -1,0 +1,22 @@
+.subtask-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 24px;
+  margin: 10px;
+}
+
+.subtask-form .icon {
+    margin-right: 5px;
+}
+
+.subtask-form input {
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.subtask-form input::placeholder {
+  opacity: 1;
+}

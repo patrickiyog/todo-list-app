@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { TaskListsContext } from './context/TaskListsContext';
 import './App.css';
 import { TaskList } from './interfaces/TaskList';
@@ -6,8 +6,9 @@ import { Task } from './interfaces/Task';
 import TaskListForm from './components/TaskListForm/TaskListForm';
 import TaskListItem from './components/TaskListItem/TaskListItem';
 import DisplayTaskList from './components/DisplayTaskList/DisplayTaskList';
+import TaskPanel from './components/TaskPanel/TaskPanel';
 
-const App: React.FC = () => {
+const App: FC = () => {
 
   const [taskLists, setTaskLists] = useState<TaskList[]>([]);
 
@@ -41,7 +42,9 @@ const App: React.FC = () => {
               setSelectedTask={setSelectedTask}
             />
           </div>
-          <div className="right-side"></div>
+          <div className="right-side">
+            <TaskPanel task={selectedTask} />
+          </div>
         </div>
       </div>
     </TaskListsContext.Provider>
