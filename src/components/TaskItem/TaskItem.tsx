@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Task } from '../../interfaces/Task';
-import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdMoreHoriz, MdOutlineRemoveCircleOutline } from "react-icons/md";
+import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdMoreHoriz } from "react-icons/md";
 import { useTaskListsContext } from '../../context/TaskListsContext';
 import './TaskItem.css';
 
