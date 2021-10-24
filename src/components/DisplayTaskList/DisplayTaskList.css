@@ -30,3 +30,20 @@
   bottom: 0;
   overflow: auto;
 }
+
+.tasklists-empty {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #bdbdbd;
+}
+
+.tasklists-empty .icon {
+  font-size: 250px;
+}
+
+.tasklists-empty .text {
+  font-size: 26px;
+}

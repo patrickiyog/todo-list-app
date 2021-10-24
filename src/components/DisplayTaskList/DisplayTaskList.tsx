@@ -3,6 +3,7 @@ import './DisplayTaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
 import { TaskList } from '../../interfaces/TaskList';
+import { MdOutlineFormatListBulleted } from "react-icons/md";
 
 interface Props {
     taskList: TaskList | null;
@@ -23,11 +24,10 @@ const DisplayTaskList = ({ taskList }: Props) => {
         return count;
     }
 
-    return (
-        <>
-            {
-                taskList &&
-                <div className="task-list">
+    const displayTaskList = (): JSX.Element => {
+        if (taskList !== null) {
+            return (
+                <>
                     <div>
                         <div className="task-list-name">{taskList.taskListName}</div>
                         <div className="task-list-details">
@@ -44,10 +44,19 @@ const DisplayTaskList = ({ taskList }: Props) => {
                     <div>
                         <TaskForm taskListId={taskList.taskListId} />
                     </div>
+                </>
+            );
+        } else {
+            return (
+                <div className="tasklists-empty">
+                    <MdOutlineFormatListBulleted className="icon" />
+                    <div className="text">Create a task list</div>
                 </div>
-            }
-        </>
-    );
+            );
+        }
+    }
+
+    return (<div className="task-list">{displayTaskList()}</div>);
 
 }
 

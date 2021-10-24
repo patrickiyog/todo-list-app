@@ -17,7 +17,7 @@ const App: React.FC = () => {
         <div className="app-container">
           <div className="left-side">
             <div className="left-side-content">
-              <TaskListForm />
+              <TaskListForm setSelectedTaskList={setSelectedTaskList}/>
               <hr />
               <div>
                 {

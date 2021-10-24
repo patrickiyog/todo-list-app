@@ -1,11 +1,15 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
+import React, { useState, ChangeEvent, KeyboardEvent, Dispatch, SetStateAction } from 'react';
 import './TaskListForm.css';
 import { useTaskListsContext } from '../../context/TaskListsContext';
 import { TaskList } from '../../interfaces/TaskList';
 import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 
-const TaskListForm = () => {
+interface Props {
+    setSelectedTaskList: Dispatch<SetStateAction<TaskList | null>>;
+}
+
+const TaskListForm = ({ setSelectedTaskList }: Props) => {
 
     const [taskListName, setTaskListName] = useState<string>('');
 
@@ -23,6 +27,7 @@ const TaskListForm = () => {
                 tasks: [],
             };
             setTaskLists([newTaskList, ...taskLists]);
+            setSelectedTaskList(newTaskList);
             setTaskListName('');
         }
     }
@@ -34,7 +39,7 @@ const TaskListForm = () => {
                     <MdAdd />
                 </div>
                 <input
-                    placeholder="Create a task list"
+                    placeholder="create a task list here..."
                     value={taskListName}
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}

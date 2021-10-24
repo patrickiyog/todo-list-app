@@ -9,14 +9,14 @@
 }
 
 .icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 25px;
-    width: 30px;
-    background-color: #b4b4b4;
-    color: #000000;
-    border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  width: 30px;
+  background-color: #b4b4b4;
+  color: #000000;
+  border-radius: 3px;
 }
 
 .task-list-item-container .icon {
@@ -35,6 +35,11 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.task-list-item-container input:hover {
+  transition: 250ms;
+  color: #ffffff;
 }
 
 .task-list-item-container input::placeholder {
