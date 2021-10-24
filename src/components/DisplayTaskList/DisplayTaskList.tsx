@@ -34,15 +34,15 @@ const DisplayTaskList = ({ taskList }: Props) => {
                             {!taskList.tasks.length ? 'No tasks' : `${taskList.tasks.length} tasks, ${countCompletedTasks()} completed`}
                         </div>
                     </div>
-                    <div>
-                        <TaskForm taskListId={taskList.taskListId} />
-                    </div>
                     <div className="task-list-list">
                         <div className="task-list-list-content">
                             {taskList.tasks.map((task, index) =>
                                 <TaskItem key={index} taskListId={taskList.taskListId} task={task} />
                             )}
                         </div>
+                    </div>
+                    <div>
+                        <TaskForm taskListId={taskList.taskListId} />
                     </div>
                 </div>
             }

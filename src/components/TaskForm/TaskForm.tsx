@@ -27,13 +27,14 @@ const TaskForm = ({ taskListId }: Props) => {
                 taskName: taskName,
                 completed: false
             };
-            const newTaskList: TaskList[] = [...taskLists];
-            for (const taskList of newTaskList) {
+            const newTaskLists: TaskList[] = [...taskLists];
+            for (const taskList of newTaskLists) {
                 if (taskList.taskListId === taskListId) {
-                    taskList.tasks.push(newTask);
-                    setTaskLists(newTaskList);
+                    taskList.tasks = [...taskList.tasks, newTask];
+                    setTaskLists(newTaskLists);
                 }
             }
+            setTaskName('');
         }
     }
 
