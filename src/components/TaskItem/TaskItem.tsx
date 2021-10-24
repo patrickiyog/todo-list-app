@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Task } from '../../interfaces/Task';
-import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdOutlineRemoveCircleOutline } from "react-icons/md";
+import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdMoreHoriz, MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { useTaskListsContext } from '../../context/TaskListsContext';
 import './TaskItem.css';
 
@@ -32,22 +32,7 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
         }
     }
 
-    const removeTask = (): void => {
-        const newTaskList = [...taskLists]
-        for (const taskList of newTaskList) {
-            if (taskList.taskListId === taskListId) {
-                const newTasks = taskList.tasks.filter(task =>
-                    task.taskId !== taskId
-                );
-                taskList.tasks = newTasks;
-                setTaskLists(newTaskList);
-                setSelectedTask('');
-                return;
-            }
-        }
-    }
-
-    const handleTaskOnClick = (): void => {
+    const handleOnClick = (): void => {
         const newTaskList = [...taskLists];
         for (const taskList of newTaskList) {
             if (taskList.taskListId === taskListId) {
@@ -63,7 +48,6 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
     return (
         <div
             className="task"
-            onClick={handleTaskOnClick}
             style={{ backgroundColor: task.selected ? '#e0e0e0' : '#ebebeb' }}
         >
             <div className="task-content">
@@ -76,8 +60,8 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
                 <span className="task-name">
                     {task.taskName}
                 </span>
-                <div className="task-remove" >
-                    <MdOutlineRemoveCircleOutline onClick={removeTask} />
+                <div className="task-edit" >
+                    <MdMoreHoriz onClick={handleOnClick} />
                 </div>
             </div>
         </div>

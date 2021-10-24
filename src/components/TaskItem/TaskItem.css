@@ -1,46 +1,45 @@
 .task {
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    padding: 0px 10px;
-    border-radius: 5px;
-    background-color: #ebebeb;
-    margin-bottom: 5px;
-    cursor: pointer;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  border-radius: 5px;
+  background-color: #ebebeb;
+  margin-bottom: 5px;
 }
 
 .task .task-content {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .task-content .task-name {
-    width: 95%;
+  width: 95%;
 }
 
 .task-content .task-completed {
-    display: flex;
-    justify-content: center;
-    margin-right: 10px;
-    font-size: 24px;
-    width: 5%;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 24px;
+  width: 5%;
+  cursor: pointer;
 }
 
 .task-completed .completed-false {
-    color: #8d8d8d;
+  color: #8d8d8d;
 }
 
 .task-completed .completed-true {
-    color: #00c853;
+  color: #00c853;
 }
 
-.task-remove {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    color: #e53935;
-    cursor: pointer;
+.task-edit {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: #8d8d8d;
+  cursor: pointer;
 }

@@ -8,12 +8,13 @@ interface Props {
 }
 
 const TaskPanel = ({ taskListId, taskId }: Props) => {
+
     return (
         <div className="task-panel">
-            {/* <SubTaskForm
+            <SubTaskForm
                 taskListId={taskListId}
                 taskId={taskId}
-            /> */}
+            />
         </div>
     );
 }
