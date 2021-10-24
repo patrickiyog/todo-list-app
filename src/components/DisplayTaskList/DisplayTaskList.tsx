@@ -1,4 +1,4 @@
-import React, { Dispatch, MouseEvent, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './DisplayTaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
