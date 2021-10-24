@@ -10,7 +10,7 @@ interface Props {
 
 const TaskListItem = ({ taskList, setSelectedTaskList }: Props) => {
 
-    const { taskListId, taskListName } = taskList;
+    const { taskListId, taskListName, tasks } = taskList;
 
     const { taskLists } = useTaskListsContext();
 
@@ -27,6 +27,9 @@ const TaskListItem = ({ taskList, setSelectedTaskList }: Props) => {
         <div className="task-list-item" onClick={handleOnClick}>
             <div>
                 {taskListName}
+            </div>
+            <div className="task-list-size">
+                <div>{tasks.length}</div>
             </div>
         </div>
     );

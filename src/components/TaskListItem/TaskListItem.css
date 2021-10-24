@@ -1,4 +1,6 @@
 .task-list-item {
+    display: flex;
+    flex-direction: row;
     font-size: 14px;
     color: #b4b4b4;
     padding: 10px 0px;
@@ -8,4 +10,10 @@
 .task-list-item:hover {
     transition: 250ms;
     color: #FFFFFF;
+}
+
+.task-list-size {
+    flex-grow: 1;
+    display: flex;
+    justify-content: right;
 }
