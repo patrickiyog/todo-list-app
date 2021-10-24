@@ -1,16 +1,19 @@
 import React from 'react';
 import './TaskPanel.css';
 import SubTaskForm from '../SubTaskForm/SubTaskForm';
-import { Task } from '../../interfaces/Task';
 
 interface Props {
-    task: Task | null;
+    taskListId: string;
+    taskId: string;
 }
 
-const TaskPanel = ({ task }: Props) => {
+const TaskPanel = ({ taskListId, taskId }: Props) => {
     return (
         <div className="task-panel">
-            <SubTaskForm />
+            {/* <SubTaskForm
+                taskListId={taskListId}
+                taskId={taskId}
+            /> */}
         </div>
     );
 }

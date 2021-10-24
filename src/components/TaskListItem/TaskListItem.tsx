@@ -5,7 +5,7 @@ import './TaskListItem.css';
 
 interface Props {
     taskList: TaskList;
-    setSelectedTaskList: Dispatch<SetStateAction<TaskList | null>>;
+    setSelectedTaskList: Dispatch<SetStateAction<string>>;
 }
 
 const TaskListItem = ({ taskList, setSelectedTaskList }: Props) => {
@@ -18,7 +18,7 @@ const TaskListItem = ({ taskList, setSelectedTaskList }: Props) => {
         event.preventDefault();
         for (const element of taskLists) {
             if (element.taskListId === taskListId) {
-                setSelectedTaskList(element);
+                setSelectedTaskList(taskListId);
             }
         }
     }

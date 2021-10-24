@@ -7,12 +7,12 @@ import './TaskItem.css';
 interface Props {
     taskListId: string;
     task: Task;
-    setSelectedTask: Dispatch<SetStateAction<Task | null>>;
+    setSelectedTask: Dispatch<SetStateAction<string>>;
 }
 
 const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
 
-    const { taskId, completed } = task;
+    const { taskId, completed, selected } = task;
 
     const { taskLists, setTaskLists } = useTaskListsContext();
 
@@ -27,7 +27,7 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
                         setTaskLists(newTaskList);
                     }
                 }
-                break;
+                return;
             }
         }
     }
@@ -41,17 +41,31 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
                 );
                 taskList.tasks = newTasks;
                 setTaskLists(newTaskList);
-                break;
+                setSelectedTask('');
+                return;
             }
         }
     }
 
     const handleTaskOnClick = (): void => {
-        setSelectedTask(task);
+        const newTaskList = [...taskLists];
+        for (const taskList of newTaskList) {
+            if (taskList.taskListId === taskListId) {
+                for (const task of taskList.tasks) {
+                    task.selected = task.taskId === taskId ? !selected : false;
+                }
+            }
+        }
+        setSelectedTask(task.taskId);
+        setTaskLists(newTaskList);
     }
 
     return (
-        <div className="task" onClick={handleTaskOnClick}>
+        <div
+            className="task"
+            onClick={handleTaskOnClick}
+            style={{ backgroundColor: task.selected ? '#e0e0e0' : '#ebebeb' }}
+        >
             <div className="task-content">
                 <div className="task-completed" onClick={completeTask}>
                     {completed ?

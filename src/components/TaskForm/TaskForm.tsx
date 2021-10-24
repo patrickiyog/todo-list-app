@@ -27,6 +27,7 @@ const TaskForm = ({ taskListId }: Props) => {
                 taskName: taskName,
                 completed: false,
                 subTasks: [],
+                selected: false,
             };
             const newTaskLists: TaskList[] = [...taskLists];
             for (const taskList of newTaskLists) {

@@ -6,7 +6,7 @@ import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 
 interface Props {
-    setSelectedTaskList: Dispatch<SetStateAction<TaskList | null>>;
+    setSelectedTaskList: Dispatch<SetStateAction<string>>;
 }
 
 const TaskListForm = ({ setSelectedTaskList }: Props) => {
@@ -27,7 +27,7 @@ const TaskListForm = ({ setSelectedTaskList }: Props) => {
                 tasks: [],
             };
             setTaskLists([newTaskList, ...taskLists]);
-            setSelectedTaskList(newTaskList);
+            setSelectedTaskList(newTaskList.taskListId);
             setTaskListName('');
         }
     }

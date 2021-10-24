@@ -1,25 +1,37 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import './DisplayTaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
-import { TaskList } from '../../interfaces/TaskList';
-import { Task } from '../../interfaces/Task';
 import { MdOutlineFormatListBulleted } from "react-icons/md";
+import { useTaskListsContext } from '../../context/TaskListsContext';
+import getTaskList from '../../util/getTaskList';
+import { TaskList } from '../../interfaces/TaskList';
 
 interface Props {
-    taskList: TaskList | null;
-    setSelectedTask: Dispatch<SetStateAction<Task | null>>;
+    taskListId: string;
+    setSelectedTask: Dispatch<SetStateAction<string>>;
 }
 
-const DisplayTaskList = ({ taskList, setSelectedTask }: Props) => {
+const DisplayTaskList = ({ taskListId, setSelectedTask }: Props) => {
+
+    const { taskLists } = useTaskListsContext();
+
+    const [taskList, setTaskList] = useState<TaskList | null>();
+
+    useEffect(() => {
+        setTaskList(getTaskList(taskListId, taskLists));
+    }, [taskListId, taskLists]);
 
     const countCompletedTasks = (): number => {
         let count: number = 0;
-        if (taskList !== null) {
-            const { tasks } = taskList;
-            for (const task of tasks) {
-                if (task.completed) {
-                    count++;
+        if (taskListId !== '') {
+            const taskList = getTaskList(taskListId, taskLists);
+            if (taskList !== null) {
+                const { tasks } = taskList;
+                for (const task of tasks) {
+                    if (task.completed) {
+                        count++;
+                    }
                 }
             }
         }
@@ -27,7 +39,7 @@ const DisplayTaskList = ({ taskList, setSelectedTask }: Props) => {
     }
 
     const displayTaskList = (): JSX.Element => {
-        if (taskList !== null) {
+        if (taskList !== null && taskList !== undefined) {
             return (
                 <>
                     <div>
@@ -61,7 +73,6 @@ const DisplayTaskList = ({ taskList, setSelectedTask }: Props) => {
             return (
                 <div className="tasklists-empty">
                     <MdOutlineFormatListBulleted className="icon" />
-                    <div className="text">Create a task list</div>
                 </div>
             );
         }

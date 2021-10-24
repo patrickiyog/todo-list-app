@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react';
 import { TaskListsContext } from './context/TaskListsContext';
 import './App.css';
 import { TaskList } from './interfaces/TaskList';
-import { Task } from './interfaces/Task';
 import TaskListForm from './components/TaskListForm/TaskListForm';
 import TaskListItem from './components/TaskListItem/TaskListItem';
 import DisplayTaskList from './components/DisplayTaskList/DisplayTaskList';
@@ -12,8 +11,8 @@ const App: FC = () => {
 
   const [taskLists, setTaskLists] = useState<TaskList[]>([]);
 
-  const [selectedTaskList, setSelectedTaskList] = useState<TaskList | null>(null);
-  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  const [selectedTaskList, setSelectedTaskList] = useState('');
+  const [selectedTask, setSelectedTask] = useState('');
 
   return (
     <TaskListsContext.Provider value={{ taskLists, setTaskLists }}>
@@ -38,12 +37,17 @@ const App: FC = () => {
           </div>
           <div className="center">
             <DisplayTaskList
-              taskList={selectedTaskList}
+              taskListId={selectedTaskList}
               setSelectedTask={setSelectedTask}
             />
           </div>
           <div className="right-side">
-            <TaskPanel task={selectedTask} />
+            <div className="right-side-content">
+              <TaskPanel
+                taskListId={selectedTaskList}
+                taskId={selectedTask}
+              />
+            </div>
           </div>
         </div>
       </div>

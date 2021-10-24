@@ -5,4 +5,5 @@ export interface Task {
     taskName: string;
     completed: boolean;
     subTasks: SubTask[];
+    selected: boolean;
 }
