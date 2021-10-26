@@ -14,39 +14,43 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
 
     const { taskLists, setTaskLists } = useTaskListsContext();
 
-    const completeTask = (): void => {
-        const newTaskList = [...taskLists]
-        for (const taskList of newTaskList) {
-            if (taskList.taskListId === taskListId) {
-                const newTasks = [...taskList.tasks];
-                for (const newTask of newTasks) {
-                    if (newTask.taskId === task?.taskId) {
-                        task.completed = !task.completed;
-                        setTaskLists(newTaskList);
-                    }
-                }
-                return;
-            }
-        }
-    }
-
-    const handleOnClick = (): void => {
-        const newTaskLists = [...taskLists];
+    const handleOnClick = (type: string): void => {
+        const newTaskLists = [...taskLists]
         for (const newTaskList of newTaskLists) {
             if (newTaskList.taskListId === taskListId) {
-                for (const newTask of newTaskList.tasks) {
-                    newTask.selected = newTask.taskId === task?.taskId ? !task?.selected : false;
+                if (type === 'complete') {
+                    if (newTaskList.taskListId === taskListId) {
+                        const newTasks = [...newTaskList.tasks];
+                        for (const newTask of newTasks) {
+                            if (newTask.taskId === task?.taskId) {
+                                task.completed = !task.completed;
+                                setTaskLists(newTaskLists);
+                            }
+                        }
+                        return;
+                    }
+                }
+                if (type === 'edit') {
+                    if (newTaskList.taskListId === taskListId) {
+                        for (const newTask of newTaskList.tasks) {
+                            newTask.selected = newTask.taskId === task?.taskId ? !task?.selected : false;
+                        }
+                    }
+                    setSelectedTask(task);
+                    setTaskLists(newTaskLists);
+                    return;
                 }
             }
         }
-        setSelectedTask(task);
-        setTaskLists(newTaskLists);
     }
 
     return (
-        <div className="task">
+        <div className="task" style={{ backgroundColor: task?.selected ? '#e0e0e0' : '#ebebeb' }}>
             <div className="task-content">
-                <div className="task-completed" onClick={completeTask}>
+                <div
+                    className="task-completed"
+                    onClick={() => handleOnClick('complete')}
+                >
                     {
                         task?.completed ?
                             <MdOutlineCheckBox className="completed-true" /> :
@@ -57,7 +61,9 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
                     {task?.taskName}
                 </span>
                 <div className="task-edit" >
-                    <MdMoreHoriz onClick={handleOnClick} />
+                    <button onClick={() => handleOnClick('edit')}>
+                        <MdMoreHoriz />
+                    </button>
                 </div>
             </div>
         </div>

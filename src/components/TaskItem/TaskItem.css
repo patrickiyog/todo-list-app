@@ -4,7 +4,6 @@
   align-items: center;
   padding: 0px 10px;
   border-radius: 5px;
-  background-color: #ebebeb;
   margin-bottom: 5px;
 }
 
@@ -41,5 +40,14 @@
   align-items: center;
   font-size: 24px;
   color: #8d8d8d;
+}
+
+.task-edit button {
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  border: none;
+  opacity: 0.4;
+  background-color: transparent;
+  font-size: 26px;
 }
