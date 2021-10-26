@@ -6,13 +6,11 @@ import './TaskItem.css';
 
 interface Props {
     taskListId: string;
-    task: Task;
-    setSelectedTask: Dispatch<SetStateAction<string>>;
+    task: Task | null;
+    setSelectedTask: Dispatch<SetStateAction<Task | null>>;
 }
 
 const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
-
-    const { taskId, completed, selected } = task;
 
     const { taskLists, setTaskLists } = useTaskListsContext();
 
@@ -21,9 +19,9 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
         for (const taskList of newTaskList) {
             if (taskList.taskListId === taskListId) {
                 const newTasks = [...taskList.tasks];
-                for (const task of newTasks) {
-                    if (task.taskId === taskId) {
-                        task.completed = !completed;
+                for (const newTask of newTasks) {
+                    if (newTask.taskId === task?.taskId) {
+                        task.completed = !task.completed;
                         setTaskLists(newTaskList);
                     }
                 }
@@ -33,32 +31,30 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
     }
 
     const handleOnClick = (): void => {
-        const newTaskList = [...taskLists];
-        for (const taskList of newTaskList) {
-            if (taskList.taskListId === taskListId) {
-                for (const task of taskList.tasks) {
-                    task.selected = task.taskId === taskId ? !selected : false;
+        const newTaskLists = [...taskLists];
+        for (const newTaskList of newTaskLists) {
+            if (newTaskList.taskListId === taskListId) {
+                for (const newTask of newTaskList.tasks) {
+                    newTask.selected = newTask.taskId === task?.taskId ? !task?.selected : false;
                 }
             }
         }
-        setSelectedTask(task.taskId);
-        setTaskLists(newTaskList);
+        setSelectedTask(task);
+        setTaskLists(newTaskLists);
     }
 
     return (
-        <div
-            className="task"
-            style={{ backgroundColor: task.selected ? '#e0e0e0' : '#ebebeb' }}
-        >
+        <div className="task">
             <div className="task-content">
                 <div className="task-completed" onClick={completeTask}>
-                    {completed ?
-                        <MdOutlineCheckBox className="completed-true" /> :
-                        <MdOutlineCheckBoxOutlineBlank className="completed-false" />
+                    {
+                        task?.completed ?
+                            <MdOutlineCheckBox className="completed-true" /> :
+                            <MdOutlineCheckBoxOutlineBlank className="completed-false" />
                     }
                 </div>
                 <span className="task-name">
-                    {task.taskName}
+                    {task?.taskName}
                 </span>
                 <div className="task-edit" >
                     <MdMoreHoriz onClick={handleOnClick} />

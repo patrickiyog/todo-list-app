@@ -4,21 +4,19 @@ import { useTaskListsContext } from '../../context/TaskListsContext';
 import './TaskListItem.css';
 
 interface Props {
-    taskList: TaskList;
-    setSelectedTaskList: Dispatch<SetStateAction<string>>;
+    taskList: TaskList | null;
+    setSelectedTaskList: Dispatch<SetStateAction<TaskList | null>>;
 }
 
 const TaskListItem = ({ taskList, setSelectedTaskList }: Props) => {
-
-    const { taskListId, taskListName, tasks } = taskList;
 
     const { taskLists } = useTaskListsContext();
 
     const handleOnClick = (event: MouseEvent): void => {
         event.preventDefault();
         for (const element of taskLists) {
-            if (element.taskListId === taskListId) {
-                setSelectedTaskList(taskListId);
+            if (element.taskListId === taskList?.taskListId) {
+                setSelectedTaskList(taskList);
             }
         }
     }
@@ -26,10 +24,10 @@ const TaskListItem = ({ taskList, setSelectedTaskList }: Props) => {
     return (
         <div className="task-list-item" onClick={handleOnClick}>
             <div>
-                {taskListName}
+                {taskList?.taskListName}
             </div>
             <div className="task-list-size">
-                <div>{tasks.length}</div>
+                <div>{taskList?.tasks.length}</div>
             </div>
         </div>
     );

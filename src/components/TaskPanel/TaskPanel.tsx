@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import './TaskPanel.css';
 import SubTaskForm from '../SubTaskForm/SubTaskForm';
+import { TaskList } from '../../interfaces/TaskList';
+import { Task } from '../../interfaces/Task';
 
 interface Props {
-    taskListId: string;
-    taskId: string;
+    taskList: TaskList | null;
+    task: Task | null;
 }
 
-const TaskPanel = ({ taskListId, taskId }: Props) => {
+const TaskPanel = ({ taskList, task }: Props) => {
 
     const [taskEditable, setTaskEditable] = useState(false);
 
     useEffect(() => {
-        setTaskEditable(taskId !== '');
-    }, [taskId])
+        setTaskEditable(task !== null);
+    }, [task]);
 
     return (
         <div className="task-panel">
             {
                 taskEditable &&
                 <SubTaskForm
-                    taskListId={taskListId}
-                    taskId={taskId}
+                    taskList={taskList}
+                    task={task}
                 />
             }
         </div>

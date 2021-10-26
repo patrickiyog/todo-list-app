@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './DisplayTaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
@@ -6,31 +6,30 @@ import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { useTaskListsContext } from '../../context/TaskListsContext';
 import getTaskList from '../../util/getTaskList';
 import { TaskList } from '../../interfaces/TaskList';
+import { Task } from '../../interfaces/Task';
 
 interface Props {
-    taskListId: string;
-    setSelectedTask: Dispatch<SetStateAction<string>>;
+    taskList: TaskList | null;
+    selectedTask: Task | null;
+    setSelectedTask: Dispatch<SetStateAction<Task | null>>;
 }
 
-const DisplayTaskList = ({ taskListId, setSelectedTask }: Props) => {
+const DisplayTaskList = ({ taskList, selectedTask, setSelectedTask }: Props) => {
 
     const { taskLists } = useTaskListsContext();
 
-    const [taskList, setTaskList] = useState<TaskList | null>();
-
-    useEffect(() => {
-        setTaskList(getTaskList(taskListId, taskLists));
-    }, [taskListId, taskLists]);
-
     const countCompletedTasks = (): number => {
         let count: number = 0;
-        if (taskListId !== '') {
-            const taskList = getTaskList(taskListId, taskLists);
-            if (taskList !== null) {
-                const { tasks } = taskList;
-                for (const task of tasks) {
-                    if (task.completed) {
-                        count++;
+        if (taskList !== null) {
+            const { taskListId } = taskList;
+            if (taskListId !== '') {
+                const taskList = getTaskList(taskListId, taskLists);
+                if (taskList !== null) {
+                    const { tasks } = taskList;
+                    for (const task of tasks) {
+                        if (task.completed) {
+                            count++;
+                        }
                     }
                 }
             }
