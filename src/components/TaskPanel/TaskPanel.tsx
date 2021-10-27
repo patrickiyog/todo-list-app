@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import './TaskPanel.css';
 import SubTaskForm from '../SubTaskForm/SubTaskForm';
+import DisplaySubTaskList from '../DisplaySubTaskList/DisplaySubTaskList';
 import { TaskList } from '../../interfaces/TaskList';
 import { Task } from '../../interfaces/Task';
 
@@ -19,6 +20,7 @@ const TaskPanel = ({ taskList, task }: Props) => {
 
     const taskPanel: JSX.Element = (
         <div className="task-panel">
+            <DisplaySubTaskList task={task} />
             <SubTaskForm
                 taskList={taskList}
                 task={task}
