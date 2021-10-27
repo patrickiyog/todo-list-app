@@ -58,6 +58,7 @@ const DisplayTaskList = ({ taskList, selectedTask, setSelectedTask }: Props) => 
                                     key={index}
                                     taskListId={taskList.taskListId}
                                     task={task}
+                                    selectedTask={selectedTask}
                                     setSelectedTask={setSelectedTask}
                                 />
                             )}

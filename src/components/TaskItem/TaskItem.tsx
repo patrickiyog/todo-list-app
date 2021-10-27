@@ -7,10 +7,11 @@ import './TaskItem.css';
 interface Props {
     taskListId: string;
     task: Task | null;
+    selectedTask: Task | null;
     setSelectedTask: Dispatch<SetStateAction<Task | null>>;
 }
 
-const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
+const TaskItem = ({ taskListId, task, selectedTask, setSelectedTask }: Props) => {
 
     const { taskLists, setTaskLists } = useTaskListsContext();
 
@@ -36,7 +37,7 @@ const TaskItem = ({ taskListId, task, setSelectedTask }: Props) => {
                             newTask.selected = newTask.taskId === task?.taskId ? !task?.selected : false;
                         }
                     }
-                    setSelectedTask(task);
+                    selectedTask?.taskId === task?.taskId ? setSelectedTask(null) : setSelectedTask(task);
                     setTaskLists(newTaskLists);
                     return;
                 }

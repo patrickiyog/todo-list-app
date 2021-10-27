@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import './TaskPanel.css';
 import SubTaskForm from '../SubTaskForm/SubTaskForm';
 import { TaskList } from '../../interfaces/TaskList';
@@ -17,17 +17,17 @@ const TaskPanel = ({ taskList, task }: Props) => {
         setTaskEditable(task !== null);
     }, [task]);
 
-    return (
+    const taskPanel: JSX.Element = (
         <div className="task-panel">
-            {
-                taskEditable &&
-                <SubTaskForm
-                    taskList={taskList}
-                    task={task}
-                />
-            }
+            <SubTaskForm
+                taskList={taskList}
+                task={task}
+            />
         </div>
     );
+
+    return <>{taskEditable && taskPanel}</>;
+
 }
 
 export default TaskPanel;
