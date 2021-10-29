@@ -2,7 +2,6 @@ import React from 'react';
 import './DisplayTaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
-import { MdOutlineFormatListBulleted } from "react-icons/md";
 import { useAppContext } from '../../context/AppContext';
 
 const DisplayTaskList = () => {
@@ -37,7 +36,7 @@ const DisplayTaskList = () => {
                     </div>
                 </div>
                 <div>
-                    <TaskForm taskListId={selectedTaskList?.taskListId} />
+                    <TaskForm />
                 </div>
             </>
         );

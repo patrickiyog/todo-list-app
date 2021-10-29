@@ -1,19 +1,16 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Task } from '../../interfaces/Task';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdMoreHoriz } from "react-icons/md";
-import { useTaskListsContext } from '../../context/TaskListsContext';
+import { useAppContext } from '../../context/AppContext';
 import './TaskItem.css';
 
 interface Props {
-    taskListId: string;
     task: Task | null;
-    selectedTask: Task | null;
-    setSelectedTask: Dispatch<SetStateAction<Task | null>>;
 }
 
-const TaskItem = ({ taskListId, task, selectedTask, setSelectedTask }: Props) => {
+const TaskItem = ({ task }: Props) => {
 
-    const { taskLists, setTaskLists } = useTaskListsContext();
+    const { selectedTaskList, setTaskLists } = useAppContext();
 
     const handleOnClick = (type: string): void => {
         const newTaskLists = [...taskLists]

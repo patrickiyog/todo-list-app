@@ -1,27 +1,24 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './TaskForm.css';
-import { useTaskListsContext } from '../../context/TaskListsContext';
+import { useAppContext } from '../../context/AppContext';
 import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 import { Task } from '../../interfaces/Task';
 import { TaskList } from '../../interfaces/TaskList';
+import { TaskLists } from '../../interfaces/TaskLists';
 
-interface Props {
-    taskListId: string;
-}
-
-const TaskForm = ({ taskListId }: Props) => {
+const TaskForm = () => {
 
     const [taskName, setTaskName] = useState<string>("");
 
-    const { taskLists, setTaskLists } = useTaskListsContext();
+    const { taskLists, setTaskLists, selectedTaskList, setSelectedTaskList } = useAppContext();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setTaskName(event.target.value);
     }
 
     const addTask = (event: KeyboardEvent): void => {
-        if (event.key === 'Enter' && /\S/.test(taskName)) {
+        if (event.key === 'Enter' && /\S/.test(taskName) && selectedTaskList && taskLists) {
             const newTask: Task = {
                 taskId: uuidv4(),
                 taskName: taskName,
@@ -29,13 +26,13 @@ const TaskForm = ({ taskListId }: Props) => {
                 subTasks: [],
                 selected: false,
             };
-            const newTaskLists: TaskList[] = [...taskLists];
-            for (const taskList of newTaskLists) {
-                if (taskList.taskListId === taskListId) {
-                    taskList.tasks = [...taskList.tasks, newTask];
-                    setTaskLists(newTaskLists);
-                }
-            }
+            const newTaskList: TaskList = selectedTaskList;
+            const { tasks } = newTaskList;
+            newTaskList.tasks = [...tasks, newTask];
+            const newTaskLists: TaskLists = taskLists;
+            setSelectedTaskList(newTaskList);
+            newTaskLists[selectedTaskList.taskListId] = newTaskList;
+            setTaskLists(newTaskLists);
             setTaskName('');
         }
     }
