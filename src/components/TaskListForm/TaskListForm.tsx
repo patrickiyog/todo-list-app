@@ -28,8 +28,7 @@ const TaskListForm = () => {
                 tasks: [],
             };
             const newTaskLists = { ...taskLists };
-            const newTaskListId = id;
-            newTaskLists[newTaskListId] = newTaskList;
+            newTaskLists[id] = newTaskList;
             setTaskLists(newTaskLists);
             setSelectedTaskList(newTaskList);
             setTaskListName('');
