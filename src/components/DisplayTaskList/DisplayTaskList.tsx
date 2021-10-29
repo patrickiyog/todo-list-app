@@ -1,36 +1,20 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import './DisplayTaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
 import { MdOutlineFormatListBulleted } from "react-icons/md";
-import { useTaskListsContext } from '../../context/TaskListsContext';
-import getTaskList from '../../util/getTaskList';
-import { TaskList } from '../../interfaces/TaskList';
-import { Task } from '../../interfaces/Task';
+import { useAppContext } from '../../context/AppContext';
 
-interface Props {
-    taskList: TaskList | null;
-    selectedTask: Task | null;
-    setSelectedTask: Dispatch<SetStateAction<Task | null>>;
-}
+const DisplayTaskList = () => {
 
-const DisplayTaskList = ({ taskList, selectedTask, setSelectedTask }: Props) => {
-
-    const { taskLists } = useTaskListsContext();
+    const { selectedTaskList } = useAppContext();
 
     const countCompletedTasks = (): number => {
-        let count: number = 0;
-        if (taskList !== null) {
-            const { taskListId } = taskList;
-            if (taskListId !== '') {
-                const taskList = getTaskList(taskListId, taskLists);
-                if (taskList !== null) {
-                    const { tasks } = taskList;
-                    for (const task of tasks) {
-                        if (task.completed) {
-                            count++;
-                        }
-                    }
+        let count = 0;
+        if (selectedTaskList) {
+            for (const task of selectedTaskList.tasks) {
+                if (task.completed) {
+                    count++;
                 }
             }
         }
@@ -38,44 +22,25 @@ const DisplayTaskList = ({ taskList, selectedTask, setSelectedTask }: Props) => 
     }
 
     const displayTaskList = (): JSX.Element => {
-        if (taskList !== null && taskList !== undefined) {
-            return (
-                <>
-                    <div>
-                        <div className="task-list-name">{taskList.taskListName}</div>
-                        <div className="task-list-details">
-                            {
-                                !taskList.tasks.length
-                                    ? 'No tasks'
-                                    : `${taskList.tasks.length} tasks, ${countCompletedTasks()} completed`
-                            }
-                        </div>
-                    </div>
-                    <div className="task-list-list">
-                        <div className="task-list-list-content">
-                            {taskList.tasks.map((task, index) =>
-                                <TaskItem
-                                    key={index}
-                                    taskListId={taskList.taskListId}
-                                    task={task}
-                                    selectedTask={selectedTask}
-                                    setSelectedTask={setSelectedTask}
-                                />
-                            )}
-                        </div>
-                    </div>
-                    <div>
-                        <TaskForm taskListId={taskList.taskListId} />
-                    </div>
-                </>
-            );
-        } else {
-            return (
-                <div className="tasklists-empty">
-                    <MdOutlineFormatListBulleted className="icon" />
+        const taskListName = selectedTaskList?.taskListName;
+        const size = selectedTaskList?.tasks.length;
+        const numCompletedTask = size ? 'No tasks' : `${size} tasks, ${countCompletedTasks()} completed`;
+        return (
+            <>
+                <div>
+                    <div className="task-list-name">{taskListName}</div>
+                    <div className="task-list-details">{numCompletedTask}</div>
                 </div>
-            );
-        }
+                <div className="task-list-list">
+                    <div className="task-list-list-content">
+                        {selectedTaskList?.tasks.map((task, index) => <TaskItem key={index} task={task} />)}
+                    </div>
+                </div>
+                <div>
+                    <TaskForm taskListId={selectedTaskList?.taskListId} />
+                </div>
+            </>
+        );
     }
 
     return (<div className="task-list">{displayTaskList()}</div>);

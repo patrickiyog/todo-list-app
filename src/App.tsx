@@ -27,7 +27,7 @@ const App: FC = () => {
 
   return (
     <AppContext.Provider
-      value={{ 
+      value={{
         taskLists,
         setTaskLists,
         selectedTaskList,
@@ -48,11 +48,7 @@ const App: FC = () => {
             </div>
           </div>
           <div className="center">
-            {/* <DisplayTaskList
-              taskList={selectedTaskList}
-              selectedTask={selectedTask}
-              setSelectedTask={setSelectedTask}
-            /> */}
+            <DisplayTaskList />
           </div>
           <div className="right-side">
             <div className="right-side-content">
