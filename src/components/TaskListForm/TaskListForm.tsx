@@ -1,19 +1,19 @@
-import React, { useState, ChangeEvent, KeyboardEvent, Dispatch, SetStateAction } from 'react';
+import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './TaskListForm.css';
-import { useTaskListsContext } from '../../context/TaskListsContext';
+import { useAppContext } from '../../context/AppContext';
 import { TaskList } from '../../interfaces/TaskList';
 import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 
-interface Props {
-    setSelectedTaskList: Dispatch<SetStateAction<TaskList | null>>;
-}
+const TaskListForm = () => {
 
-const TaskListForm = ({ setSelectedTaskList }: Props) => {
+    const [taskListName, setTaskListName] = useState('');
 
-    const [taskListName, setTaskListName] = useState<string>('');
-
-    const { taskLists, setTaskLists } = useTaskListsContext();
+    const {
+        taskLists,
+        setTaskLists,
+        setSelectedTaskList
+    } = useAppContext();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setTaskListName(event.target.value);
@@ -26,7 +26,10 @@ const TaskListForm = ({ setSelectedTaskList }: Props) => {
                 taskListName: taskListName,
                 tasks: [],
             };
-            setTaskLists([newTaskList, ...taskLists]);
+            const newTaskLists = { ...taskLists };
+            const newTaskListId = uuidv4();
+            newTaskLists[newTaskListId] = newTaskList;
+            setTaskLists(newTaskLists);
             setSelectedTaskList(newTaskList);
             setTaskListName('');
         }
