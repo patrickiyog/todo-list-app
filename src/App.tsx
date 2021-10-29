@@ -15,9 +15,19 @@ const App: FC = () => {
   const [selectedTaskList, setSelectedTaskList] = useState<TaskList | null>(null);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 
+  const mapTaskListItem = (): JSX.Element | null => {
+    if (taskLists !== null && Object.keys(taskLists).length) {
+      for (const key in taskLists) {
+        const taskList = taskLists[key];
+        return <TaskListItem key={taskList.taskListId} taskList={taskList} />;
+      }
+    }
+    return null;
+  }
+
   return (
     <AppContext.Provider
-      value={{
+      value={{ 
         taskLists,
         setTaskLists,
         selectedTaskList,
@@ -33,31 +43,23 @@ const App: FC = () => {
               <TaskListForm />
               <hr />
               <div>
-                {
-                  taskLists.map(taskList =>
-                    <TaskListItem
-                      key={taskList.taskListId}
-                      taskList={taskList}
-                      setSelectedTaskList={setSelectedTaskList}
-                    />
-                  )
-                }
+                {mapTaskListItem()}
               </div>
             </div>
           </div>
           <div className="center">
-            <DisplayTaskList
+            {/* <DisplayTaskList
               taskList={selectedTaskList}
               selectedTask={selectedTask}
               setSelectedTask={setSelectedTask}
-            />
+            /> */}
           </div>
           <div className="right-side">
             <div className="right-side-content">
-              <TaskPanel
+              {/* <TaskPanel
                 taskList={selectedTaskList}
                 task={selectedTask}
-              />
+              /> */}
             </div>
           </div>
         </div>

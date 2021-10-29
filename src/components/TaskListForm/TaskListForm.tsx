@@ -21,13 +21,14 @@ const TaskListForm = () => {
 
     const handleKeyDown = (event: KeyboardEvent): void => {
         if (event.key === 'Enter' && /\S/.test(taskListName)) {
+            const id = uuidv4();
             const newTaskList: TaskList = {
-                taskListId: uuidv4(),
+                taskListId: id,
                 taskListName: taskListName,
                 tasks: [],
             };
             const newTaskLists = { ...taskLists };
-            const newTaskListId = uuidv4();
+            const newTaskListId = id;
             newTaskLists[newTaskListId] = newTaskList;
             setTaskLists(newTaskLists);
             setSelectedTaskList(newTaskList);

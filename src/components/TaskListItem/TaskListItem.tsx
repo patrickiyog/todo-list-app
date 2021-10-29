@@ -1,33 +1,31 @@
-import React, { Dispatch, SetStateAction, MouseEvent } from 'react';
+import React, { MouseEvent } from 'react';
 import { TaskList } from '../../interfaces/TaskList';
-import { useTaskListsContext } from '../../context/TaskListsContext';
+import { useAppContext } from '../../context/AppContext';
 import './TaskListItem.css';
 
 interface Props {
-    taskList: TaskList | null;
-    setSelectedTaskList: Dispatch<SetStateAction<TaskList | null>>;
+    taskList: TaskList;
 }
 
-const TaskListItem = ({ taskList, setSelectedTaskList }: Props) => {
+const TaskListItem = ({ taskList }: Props) => {
 
-    const { taskLists } = useTaskListsContext();
+    const { taskListId, taskListName, tasks } = taskList;
+
+    const { taskLists, setSelectedTaskList } = useAppContext();
 
     const handleOnClick = (event: MouseEvent): void => {
-        event.preventDefault();
-        for (const element of taskLists) {
-            if (element.taskListId === taskList?.taskListId) {
-                setSelectedTaskList(taskList);
-            }
+        if (taskLists) {
+            setSelectedTaskList(taskLists[taskListId]);
         }
     }
 
     return (
         <div className="task-list-item" onClick={handleOnClick}>
             <div>
-                {taskList?.taskListName}
+                {taskListName}
             </div>
             <div className="task-list-size">
-                <div>{taskList?.tasks.length}</div>
+                <div>{tasks.length}</div>
             </div>
         </div>
     );
