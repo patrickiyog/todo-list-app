@@ -3,6 +3,7 @@ import './DisplayTaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
 import { useAppContext } from '../../context/AppContext';
+import { MdList } from 'react-icons/md/'
 
 const DisplayTaskList = () => {
 
@@ -24,22 +25,32 @@ const DisplayTaskList = () => {
         const taskListName = selectedTaskList?.taskListName;
         const size = selectedTaskList?.tasks.length;
         const numCompletedTask = size ? 'No tasks' : `${size} tasks, ${countCompletedTasks()} completed`;
-        return (
-            <>
-                <div>
-                    <div className="task-list-name">{taskListName}</div>
-                    <div className="task-list-details">{numCompletedTask}</div>
-                </div>
-                <div className="task-list-list">
-                    <div className="task-list-list-content">
-                        {selectedTaskList?.tasks.map((task, index) => <TaskItem key={index} task={task} />)}
+        if (taskListName) {
+            return (
+                <>
+                    <div>
+                        <div className="task-list-name">{taskListName}</div>
+                        <div className="task-list-details">{numCompletedTask}</div>
                     </div>
+                    <div className="task-list-list">
+                        <div className="task-list-list-content">
+                            {selectedTaskList?.tasks.map((task, index) => <TaskItem key={index} task={task} />)}
+                        </div>
+                    </div>
+                    <div>
+                        <TaskForm />
+                    </div>
+                </>
+            );
+        } else {
+            return (
+                <div className="tasklists-empty">
+                    <MdList className="icon" />
+                    <div className="text">Create a task list</div>
                 </div>
-                <div>
-                    <TaskForm />
-                </div>
-            </>
-        );
+            )
+        }
+
     }
 
     return (<div className="task-list">{displayTaskList()}</div>);
