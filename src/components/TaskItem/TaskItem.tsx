@@ -10,35 +10,27 @@ interface Props {
 
 const TaskItem = ({ task }: Props) => {
 
-    const { selectedTaskList, setTaskLists } = useAppContext();
+    const { taskLists, selectedTaskList, setTaskLists, setSelectedTaskList } = useAppContext();
 
     const handleOnClick = (type: string): void => {
-        const newTaskLists = [...taskLists]
-        for (const newTaskList of newTaskLists) {
-            if (newTaskList.taskListId === taskListId) {
-                if (type === 'complete') {
-                    if (newTaskList.taskListId === taskListId) {
-                        const newTasks = [...newTaskList.tasks];
-                        for (const newTask of newTasks) {
-                            if (newTask.taskId === task?.taskId) {
-                                task.completed = !task.completed;
-                                setTaskLists(newTaskLists);
-                            }
-                        }
-                        return;
-                    }
-                }
-                if (type === 'edit') {
-                    if (newTaskList.taskListId === taskListId) {
-                        for (const newTask of newTaskList.tasks) {
-                            newTask.selected = newTask.taskId === task?.taskId ? !task?.selected : false;
-                        }
-                    }
-                    selectedTask?.taskId === task?.taskId ? setSelectedTask(null) : setSelectedTask(task);
-                    setTaskLists(newTaskLists);
-                    return;
+        if (type === 'complete') {
+            completeTask();
+        }
+    }
+
+    const completeTask = (): void => {
+        if (task && selectedTaskList) {
+            const newSelectedTaskList = selectedTaskList;
+            const newTasks = newSelectedTaskList.tasks;
+            for (const newTask of newTasks) {
+                if (newTask.taskId === task.taskId) {
+                    newTask.completed = !task.completed;
                 }
             }
+            const newTaskLists = { ...taskLists };
+            newTaskLists[selectedTaskList.taskListId] = newSelectedTaskList;
+            setTaskLists(newTaskLists);
+            setSelectedTaskList(newSelectedTaskList);
         }
     }
 

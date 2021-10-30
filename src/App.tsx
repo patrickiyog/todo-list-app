@@ -17,10 +17,12 @@ const App: FC = () => {
 
   const mapTaskListItem = (): JSX.Element | null => {
     if (taskLists !== null && Object.keys(taskLists).length) {
-      for (const key in taskLists) {
-        const taskList = taskLists[key];
-        return <TaskListItem key={taskList.taskListId} taskList={taskList} />;
-      }
+      const taskListsArray = Object.values(taskLists).reverse();
+      return (
+        <>
+          {taskListsArray.map((taskList, index) => <TaskListItem key={index} taskList={taskList} />)}
+        </>
+      );
     }
     return null;
   }

@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import { TaskList } from '../../interfaces/TaskList';
 import { useAppContext } from '../../context/AppContext';
 import './TaskListItem.css';
@@ -13,7 +13,7 @@ const TaskListItem = ({ taskList }: Props) => {
 
     const { taskLists, setSelectedTaskList } = useAppContext();
 
-    const handleOnClick = (event: MouseEvent): void => {
+    const handleOnClick = (): void => {
         if (taskLists) {
             setSelectedTaskList(taskLists[taskListId]);
         }
