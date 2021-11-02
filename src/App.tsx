@@ -7,7 +7,6 @@ import { Task } from './interfaces/Task';
 import TaskListForm from './components/TaskListForm/TaskListForm';
 import TaskListItem from './components/TaskListItem/TaskListItem';
 import DisplayTaskList from './components/DisplayTaskList/DisplayTaskList';
-import TaskPanel from './components/TaskPanel/TaskPanel';
 
 const App: FC = () => {
 
@@ -51,14 +50,6 @@ const App: FC = () => {
           </div>
           <div className="center">
             <DisplayTaskList />
-          </div>
-          <div className="right-side">
-            <div className="right-side-content">
-              {/* <TaskPanel
-                taskList={selectedTaskList}
-                task={selectedTask}
-              /> */}
-            </div>
           </div>
         </div>
       </div>

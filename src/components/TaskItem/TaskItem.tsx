@@ -35,7 +35,7 @@ const TaskItem = ({ task }: Props) => {
     }
 
     return (
-        <div className="task" style={{ backgroundColor: task?.selected ? '#e0e0e0' : '#ebebeb' }}>
+        <div className="task">
             <div className="task-content">
                 <div
                     className="task-completed"

@@ -4,8 +4,6 @@ import { useAppContext } from '../../context/AppContext';
 import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 import { Task } from '../../interfaces/Task';
-import { TaskList } from '../../interfaces/TaskList';
-import { TaskLists } from '../../interfaces/TaskLists';
 
 const TaskForm = () => {
 
@@ -23,13 +21,12 @@ const TaskForm = () => {
                 taskId: uuidv4(),
                 taskName: taskName,
                 completed: false,
-                subTasks: [],
                 selected: false,
             };
-            const newTaskList: TaskList = selectedTaskList;
+            const newTaskList = selectedTaskList;
             const { tasks } = newTaskList;
             newTaskList.tasks = [...tasks, newTask];
-            const newTaskLists: TaskLists = taskLists;
+            const newTaskLists = taskLists;
             setSelectedTaskList(newTaskList);
             newTaskLists[selectedTaskList.taskListId] = newTaskList;
             setTaskLists(newTaskLists);
