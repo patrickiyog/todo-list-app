@@ -1,18 +1,16 @@
 import React, { FC, useState } from 'react';
 import { AppContext } from './context/AppContext';
 import './App.css';
-import { TaskLists } from './interfaces/TaskLists';
-import { TaskList } from './interfaces/TaskList';
-import { Task } from './interfaces/Task';
+import { Lists } from './interfaces/Lists';
+import { List } from './interfaces/List';
 import TaskListForm from './components/TaskListForm/TaskListForm';
 import TaskListItem from './components/TaskListItem/TaskListItem';
-import DisplayTaskList from './components/DisplayTaskList/DisplayTaskList';
+import TaskList from './components/TaskList/TaskList';
 
 const App: FC = () => {
 
-  const [taskLists, setTaskLists] = useState<TaskLists | null>(null);
-  const [selectedTaskList, setSelectedTaskList] = useState<TaskList | null>(null);
-  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  const [taskLists, setTaskLists] = useState<Lists | null>(null);
+  const [selectedTaskList, setSelectedTaskList] = useState<List | null>(null);
 
   const mapTaskListItem = (): JSX.Element | null => {
     if (taskLists !== null && Object.keys(taskLists).length) {
@@ -33,8 +31,6 @@ const App: FC = () => {
         setTaskLists,
         selectedTaskList,
         setSelectedTaskList,
-        selectedTask,
-        setSelectedTask
       }}
     >
       <div className="app">
@@ -49,7 +45,7 @@ const App: FC = () => {
             </div>
           </div>
           <div className="center">
-            <DisplayTaskList />
+            <TaskList />
           </div>
         </div>
       </div>

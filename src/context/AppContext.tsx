@@ -1,24 +1,19 @@
 import { createContext, useContext } from "react";
-import { Task } from "../interfaces/Task";
-import { TaskList } from "../interfaces/TaskList";
-import { TaskLists } from "../interfaces/TaskLists";
+import { List } from "../interfaces/List";
+import { Lists } from "../interfaces/Lists";
 
 export type AppType = {
-    taskLists: TaskLists | null;
-    selectedTaskList: TaskList | null;
-    selectedTask: Task | null;
-    setTaskLists: (taskLists: TaskLists) => void;
-    setSelectedTaskList: (taskList: TaskList) => void;
-    setSelectedTask: (task: Task) => void;
+    taskLists: Lists | null;
+    selectedTaskList: List | null;
+    setTaskLists: (taskLists: Lists) => void;
+    setSelectedTaskList: (taskList: List) => void;
 };
 
 export const AppContext = createContext<AppType>({
     taskLists: null,
     selectedTaskList: null,
-    selectedTask: null,
     setTaskLists: () => { },
     setSelectedTaskList: () => { },
-    setSelectedTask: () => { }
 });
 
 export const useAppContext = () => useContext(AppContext);

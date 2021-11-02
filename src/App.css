@@ -40,15 +40,6 @@ body {
 .center {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 75%;
   background-color: #f1f1f1;
-}
-
-.right-side {
-  width: 25%;
-  background-color: #f5f5f5;
-}
-
-.right-side-content {
-  margin: 16px;
 }

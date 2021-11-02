@@ -1,11 +1,11 @@
 import React from 'react';
-import { Task } from '../../interfaces/Task';
-import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdMoreHoriz } from "react-icons/md";
+import { ListItem } from '../../interfaces/ListItem';
+import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import { useAppContext } from '../../context/AppContext';
 import './TaskItem.css';
 
 interface Props {
-    task: Task | null;
+    task: ListItem | null;
 }
 
 const TaskItem = ({ task }: Props) => {
@@ -21,14 +21,14 @@ const TaskItem = ({ task }: Props) => {
     const completeTask = (): void => {
         if (task && selectedTaskList) {
             const newSelectedTaskList = selectedTaskList;
-            const newTasks = newSelectedTaskList.tasks;
+            const newTasks = newSelectedTaskList.listItems;
             for (const newTask of newTasks) {
                 if (newTask.taskId === task.taskId) {
                     newTask.completed = !task.completed;
                 }
             }
             const newTaskLists = { ...taskLists };
-            newTaskLists[selectedTaskList.taskListId] = newSelectedTaskList;
+            newTaskLists[selectedTaskList.listId] = newSelectedTaskList;
             setTaskLists(newTaskLists);
             setSelectedTaskList(newSelectedTaskList);
         }
@@ -50,11 +50,6 @@ const TaskItem = ({ task }: Props) => {
                 <span className="task-name">
                     {task?.taskName}
                 </span>
-                <div className="task-edit" >
-                    <button onClick={() => handleOnClick('edit')}>
-                        <MdMoreHoriz />
-                    </button>
-                </div>
             </div>
         </div>
     );

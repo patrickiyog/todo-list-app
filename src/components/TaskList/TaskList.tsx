@@ -1,18 +1,18 @@
 import React from 'react';
-import './DisplayTaskList.css';
+import './TaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
 import { useAppContext } from '../../context/AppContext';
 import { MdList } from 'react-icons/md/'
 
-const DisplayTaskList = () => {
+const TaskList = () => {
 
     const { selectedTaskList } = useAppContext();
 
     const countCompletedTasks = (): number => {
         let count = 0;
         if (selectedTaskList) {
-            for (const task of selectedTaskList.tasks) {
+            for (const task of selectedTaskList.listItems) {
                 if (task.completed) {
                     count++;
                 }
@@ -22,8 +22,8 @@ const DisplayTaskList = () => {
     }
 
     const displayTaskList = (): JSX.Element => {
-        const taskListName = selectedTaskList?.taskListName;
-        const size = selectedTaskList?.tasks.length;
+        const taskListName = selectedTaskList?.listName;
+        const size = selectedTaskList?.listItems.length;
         const numCompletedTask = size ? 'No tasks' : `${size} tasks, ${countCompletedTasks()} completed`;
         if (taskListName) {
             return (
@@ -34,7 +34,7 @@ const DisplayTaskList = () => {
                     </div>
                     <div className="task-list-list">
                         <div className="task-list-list-content">
-                            {selectedTaskList?.tasks.map((task, index) => <TaskItem key={index} task={task} />)}
+                            {selectedTaskList?.listItems.map((task, index) => <TaskItem key={index} task={task} />)}
                         </div>
                     </div>
                     <div>
@@ -57,4 +57,4 @@ const DisplayTaskList = () => {
 
 }
 
-export default DisplayTaskList;
+export default TaskList;

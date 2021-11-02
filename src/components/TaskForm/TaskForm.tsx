@@ -3,7 +3,7 @@ import './TaskForm.css';
 import { useAppContext } from '../../context/AppContext';
 import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
-import { Task } from '../../interfaces/Task';
+import { ListItem } from '../../interfaces/ListItem';
 
 const TaskForm = () => {
 
@@ -17,20 +17,13 @@ const TaskForm = () => {
 
     const addTask = (event: KeyboardEvent): void => {
         if (event.key === 'Enter' && /\S/.test(taskName) && selectedTaskList && taskLists) {
-            const newTask: Task = {
+            const newTask: ListItem = {
                 taskId: uuidv4(),
                 taskName: taskName,
                 completed: false,
                 selected: false,
             };
-            const newTaskList = selectedTaskList;
-            const { tasks } = newTaskList;
-            newTaskList.tasks = [...tasks, newTask];
-            const newTaskLists = taskLists;
-            setSelectedTaskList(newTaskList);
-            newTaskLists[selectedTaskList.taskListId] = newTaskList;
-            setTaskLists(newTaskLists);
-            setTaskName('');
+            console.log('Task', newTask);
         }
     }
 

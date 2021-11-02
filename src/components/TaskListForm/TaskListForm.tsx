@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './TaskListForm.css';
 import { useAppContext } from '../../context/AppContext';
-import { TaskList } from '../../interfaces/TaskList';
+import { List } from '../../interfaces/List';
 import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -22,10 +22,10 @@ const TaskListForm = () => {
     const handleKeyDown = (event: KeyboardEvent): void => {
         if (event.key === 'Enter' && /\S/.test(taskListName)) {
             const id = uuidv4();
-            const newTaskList: TaskList = {
-                taskListId: id,
-                taskListName: taskListName,
-                tasks: [],
+            const newTaskList: List = {
+                listId: id,
+                listName: taskListName,
+                listItems: [],
             };
             const newTaskLists = { ...taskLists };
             newTaskLists[id] = newTaskList;

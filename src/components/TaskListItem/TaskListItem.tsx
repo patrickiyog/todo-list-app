@@ -1,31 +1,31 @@
 import React from 'react';
-import { TaskList } from '../../interfaces/TaskList';
+import { List } from '../../interfaces/List';
 import { useAppContext } from '../../context/AppContext';
 import './TaskListItem.css';
 
 interface Props {
-    taskList: TaskList;
+    taskList: List;
 }
 
 const TaskListItem = ({ taskList }: Props) => {
 
-    const { taskListId, taskListName, tasks } = taskList;
+    const { listId, listName, listItems } = taskList;
 
     const { taskLists, setSelectedTaskList } = useAppContext();
 
     const handleOnClick = (): void => {
         if (taskLists) {
-            setSelectedTaskList(taskLists[taskListId]);
+            setSelectedTaskList(taskLists[listId]);
         }
     }
 
     return (
         <div className="task-list-item" onClick={handleOnClick}>
             <div>
-                {taskListName}
+                {listName}
             </div>
             <div className="task-list-size">
-                <div>{tasks.length}</div>
+                <div>{listItems.length}</div>
             </div>
         </div>
     );
