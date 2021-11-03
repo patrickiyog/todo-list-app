@@ -16,7 +16,6 @@ const TaskList = () => {
     const [taskItems, setTaskItems] = useState<ListItem[]>([]);
 
     useEffect(() => {
-        console.log(1);
         if (taskLists !== null && selectedTaskList !== '') {
             const { listName, listItems } = taskLists[selectedTaskList];
             setListName(listName);
@@ -37,7 +36,7 @@ const TaskList = () => {
     }
 
     const displayTaskList = () => {
-        const numCompletedTask = numberOfTasks ? 'No tasks' : `${numberOfTasks} tasks, ${numberOfCompletedTasks} completed`;
+        const numCompletedTask = numberOfTasks ? `${numberOfTasks} tasks, ${numberOfCompletedTasks} completed` : `No tasks`;
         if (listName) {
             return (
                 <>
