@@ -9,7 +9,7 @@ const TaskForm = () => {
 
     const [taskName, setTaskName] = useState<string>("");
 
-    const { taskLists, setTaskLists, selectedTaskList, setSelectedTaskList } = useAppContext();
+    const { taskLists, setTaskLists, selectedTaskList } = useAppContext();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setTaskName(event.target.value);
@@ -23,6 +23,12 @@ const TaskForm = () => {
                 completed: false,
                 selected: false,
             };
+            const newSelectedTaskList = taskLists[selectedTaskList];
+            const newTasks = [...newSelectedTaskList.listItems, newTask];
+            newSelectedTaskList.listItems = newTasks;
+            const newTaskLists = { ...taskLists };
+            newTaskLists[selectedTaskList] = newSelectedTaskList;
+            setTaskLists(newTaskLists);
             setTaskName('');
         }
     }

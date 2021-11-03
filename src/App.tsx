@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { AppContext } from './context/AppContext';
 import './App.css';
 import { Lists } from './interfaces/Lists';
-import { List } from './interfaces/List';
 import TaskListForm from './components/TaskListForm/TaskListForm';
 import TaskListItems from './components/TaskListItems/TaskListItems';
 import TaskList from './components/TaskList/TaskList';

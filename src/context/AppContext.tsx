@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-import { List } from "../interfaces/List";
 import { Lists } from "../interfaces/Lists";
 
 export type AppType = {
