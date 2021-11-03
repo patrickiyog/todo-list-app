@@ -11,7 +11,7 @@ const TaskListItem = ({ taskList }: Props) => {
 
     const { listId, listName, listItems } = taskList;
 
-    const { taskLists, setSelectedTaskList } = useAppContext();
+    const { taskLists, selectedTaskList, setSelectedTaskList } = useAppContext();
 
     const handleOnClick = (): void => {
         if (taskLists) {
@@ -20,10 +20,14 @@ const TaskListItem = ({ taskList }: Props) => {
     }
 
     return (
-        <div className="task-list-item" onClick={handleOnClick}>
-            <div>
-                {listName}
-            </div>
+        <div
+            className="task-list-item"
+            onClick={handleOnClick}
+            style={{
+                color: selectedTaskList === listId ? '#FFFFFF' : '#b4b4b4',
+            }}
+        >
+            <div>{listName}</div>
             <div className="task-list-size">
                 <div>{listItems.length}</div>
             </div>
