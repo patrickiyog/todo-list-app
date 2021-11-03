@@ -18,12 +18,12 @@ const TaskForm = () => {
     const addTask = (event: KeyboardEvent): void => {
         if (event.key === 'Enter' && /\S/.test(taskName) && selectedTaskList && taskLists) {
             const newTask: ListItem = {
-                taskId: uuidv4(),
-                taskName: taskName,
+                listItemId: uuidv4(),
+                listItemName: taskName,
                 completed: false,
                 selected: false,
             };
-            console.log('Task', newTask);
+            setTaskName('');
         }
     }
 

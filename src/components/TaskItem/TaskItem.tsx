@@ -19,18 +19,19 @@ const TaskItem = ({ task }: Props) => {
     }
 
     const completeTask = (): void => {
-        if (task && selectedTaskList) {
-            const newSelectedTaskList = selectedTaskList;
-            const newTasks = newSelectedTaskList.listItems;
+        if (task && taskLists !== null && selectedTaskList !== '') {
+            const newSelectedTaskList = taskLists[selectedTaskList];
+            const { listId, listItems } = newSelectedTaskList;
+            const newTasks = [...listItems];
             for (const newTask of newTasks) {
-                if (newTask.taskId === task.taskId) {
+                if (newTask.listItemId === task.listItemId) {
                     newTask.completed = !task.completed;
                 }
             }
             const newTaskLists = { ...taskLists };
-            newTaskLists[selectedTaskList.listId] = newSelectedTaskList;
+            newTaskLists[listId] = newSelectedTaskList;
             setTaskLists(newTaskLists);
-            setSelectedTaskList(newSelectedTaskList);
+            setSelectedTaskList(newSelectedTaskList.listId);
         }
     }
 
@@ -48,7 +49,7 @@ const TaskItem = ({ task }: Props) => {
                     }
                 </div>
                 <span className="task-name">
-                    {task?.taskName}
+                    {task?.listItemName}
                 </span>
             </div>
         </div>

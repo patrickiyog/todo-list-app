@@ -4,14 +4,14 @@ import { Lists } from "../interfaces/Lists";
 
 export type AppType = {
     taskLists: Lists | null;
-    selectedTaskList: List | null;
+    selectedTaskList: string;
     setTaskLists: (taskLists: Lists) => void;
-    setSelectedTaskList: (taskList: List) => void;
+    setSelectedTaskList: (taskListId: string) => void;
 };
 
 export const AppContext = createContext<AppType>({
     taskLists: null,
-    selectedTaskList: null,
+    selectedTaskList: '',
     setTaskLists: () => { },
     setSelectedTaskList: () => { },
 });

@@ -30,7 +30,7 @@ const TaskListForm = () => {
             const newTaskLists = { ...taskLists };
             newTaskLists[id] = newTaskList;
             setTaskLists(newTaskLists);
-            setSelectedTaskList(newTaskList);
+            setSelectedTaskList(id);
             setTaskListName('');
         }
     }

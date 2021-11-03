@@ -10,7 +10,7 @@ import TaskList from './components/TaskList/TaskList';
 const App = () => {
 
   const [taskLists, setTaskLists] = useState<Lists | null>(null);
-  const [selectedTaskList, setSelectedTaskList] = useState<List | null>(null);
+  const [selectedTaskList, setSelectedTaskList] = useState('');
 
   return (
     <AppContext.Provider

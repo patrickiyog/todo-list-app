@@ -1,6 +1,6 @@
 export interface ListItem {
-    taskId: string;
-    taskName: string;
+    listItemId: string;
+    listItemName: string;
     completed: boolean;
     selected: boolean;
 }

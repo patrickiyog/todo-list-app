@@ -15,7 +15,7 @@ const TaskListItem = ({ taskList }: Props) => {
 
     const handleOnClick = (): void => {
         if (taskLists) {
-            setSelectedTaskList(taskLists[listId]);
+            setSelectedTaskList(listId);
         }
     }
 
