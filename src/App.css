@@ -19,25 +19,18 @@ body {
   height: 100vh;
 }
 
-.app-container {
+.app-content {
   width: 60%;
   display: flex;
 }
 
-.left-side {
+.tasklist-form-and-items {
   width: 25%;
+  padding: 16px;
   background-color: #212121;
 }
 
-.left-side-content {
-  margin: 16px;
-}
-
-.left-side-content #logo {
-  padding: 0px 0px 16px 0px;
-}
-
-.center {
+.display-tasklist {
   display: flex;
   flex-direction: column;
   width: 75%;
