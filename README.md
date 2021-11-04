@@ -11,10 +11,13 @@ This application gives a user the ability to create many task lists.
 - React
 
 ## Functionality
-
-1. Create a tasklist
-2. Create a list of tasklists
-3. Add a task
-4. Remove a task
-5. Display the number of tasks in a tasklist
-6. Display the number of completed tasks in a task list
+- [x] Create a tasklist
+- [x] Create a list of tasklists
+- [x] Add a task
+- [x] Remove a task
+- [x] Display the number of tasks in a tasklist
+- [x] Display the number of completed tasks in a task list
+- [ ] Create a folder for a list of tasklists
+- [ ] Delete a tasklist
+- [ ] Add a label on a task
+- [ ] Remove a label on a task
