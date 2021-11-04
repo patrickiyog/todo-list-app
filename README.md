@@ -1,6 +1,6 @@
 # Task List Application
 
-View the app [here](https://patrickiyog.github.io/todo-list-app/)
+[View the app here](https://patrickiyog.github.io/todo-list-app/)
 
 ## Description
 
