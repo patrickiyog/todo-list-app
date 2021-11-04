@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/patrickiyog/todo-list-app.git/static/css/main.d78845af.chunk.css",
+    "main.js": "/patrickiyog/todo-list-app.git/static/js/main.41a4f768.chunk.js",
+    "main.js.map": "/patrickiyog/todo-list-app.git/static/js/main.41a4f768.chunk.js.map",
+    "runtime-main.js": "/patrickiyog/todo-list-app.git/static/js/runtime-main.bb696dfb.js",
+    "runtime-main.js.map": "/patrickiyog/todo-list-app.git/static/js/runtime-main.bb696dfb.js.map",
+    "static/js/2.32b0c235.chunk.js": "/patrickiyog/todo-list-app.git/static/js/2.32b0c235.chunk.js",
+    "static/js/2.32b0c235.chunk.js.map": "/patrickiyog/todo-list-app.git/static/js/2.32b0c235.chunk.js.map",
+    "static/js/3.cccf4264.chunk.js": "/patrickiyog/todo-list-app.git/static/js/3.cccf4264.chunk.js",
+    "static/js/3.cccf4264.chunk.js.map": "/patrickiyog/todo-list-app.git/static/js/3.cccf4264.chunk.js.map",
+    "index.html": "/patrickiyog/todo-list-app.git/index.html",
+    "static/css/main.d78845af.chunk.css.map": "/patrickiyog/todo-list-app.git/static/css/main.d78845af.chunk.css.map",
+    "static/js/2.32b0c235.chunk.js.LICENSE.txt": "/patrickiyog/todo-list-app.git/static/js/2.32b0c235.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bb696dfb.js",
+    "static/js/2.32b0c235.chunk.js",
+    "static/css/main.d78845af.chunk.css",
+    "static/js/main.41a4f768.chunk.js"
+  ]
+}
