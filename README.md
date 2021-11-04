@@ -2,7 +2,11 @@
 
 ## Description
 
-This application gives a user the ability to create many task lists. The reason this application was developed was so I can to practice React with TypeScript. 
+This application gives a user the ability to create many task lists. 
+
+## Technologies
+1. TypeScript
+2. React
 
 ## Functionality
 
