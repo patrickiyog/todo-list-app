@@ -37,19 +37,10 @@
   color: #00c853;
 }
 
-.task-edit {
+.task-remove {
   display: flex;
   align-items: center;
-  font-size: 24px;
-  color: #8d8d8d;
-}
-
-.task-edit button {
-  display: flex;
-  align-items: center;
+  font-size: 18px;
+  color: rgb(238, 43, 43);
   cursor: pointer;
-  border: none;
-  opacity: 0.4;
-  background-color: transparent;
-  font-size: 26px;
 }

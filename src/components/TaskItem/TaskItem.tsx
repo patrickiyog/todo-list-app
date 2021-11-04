@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListItem } from '../../interfaces/ListItem';
-import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
+import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdRemoveCircleOutline } from "react-icons/md";
 import { useAppContext } from '../../context/AppContext';
 import './TaskItem.css';
 
@@ -51,6 +51,9 @@ const TaskItem = ({ task }: Props) => {
                 <span className="task-name">
                     {task?.listItemName}
                 </span>
+                <div className="task-remove">
+                    <MdRemoveCircleOutline className="icon" />
+                </div>
             </div>
         </div>
     );
