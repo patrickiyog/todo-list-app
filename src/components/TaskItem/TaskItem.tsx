@@ -12,13 +12,7 @@ const TaskItem = ({ task }: Props) => {
 
     const { taskLists, selectedTaskList, setTaskLists, setSelectedTaskList } = useAppContext();
 
-    const handleOnClick = (type: string): void => {
-        if (type === 'complete') {
-            completeTask();
-        }
-    }
-
-    const completeTask = (): void => {
+    const completeTask = () => {
         if (task && taskLists !== null && selectedTaskList !== '') {
             const newSelectedTaskList = taskLists[selectedTaskList];
             const { listId, listItems } = newSelectedTaskList;
@@ -35,12 +29,25 @@ const TaskItem = ({ task }: Props) => {
         }
     }
 
+    const onRemove = () => {
+        if (task && taskLists !== null && selectedTaskList !== '') {
+            const newSelectedTaskList = taskLists[selectedTaskList];
+            const { listId, listItems } = newSelectedTaskList;
+            const newTasks = listItems.filter(listItem => listItem.listItemId !== task.listItemId);
+            const newTaskLists = { ...taskLists };
+            newSelectedTaskList.listItems = newTasks;
+            newTaskLists[listId] = newSelectedTaskList;
+            setTaskLists(newTaskLists);
+            setSelectedTaskList(newSelectedTaskList.listId);
+        }
+    }
+
     return (
         <div className="task">
             <div className="task-content">
                 <div
                     className="task-completed"
-                    onClick={() => handleOnClick('complete')}
+                    onClick={completeTask}
                 >
                     {
                         task?.completed ?
@@ -51,7 +58,7 @@ const TaskItem = ({ task }: Props) => {
                 <span className="task-name">
                     {task?.listItemName}
                 </span>
-                <div className="task-remove">
+                <div className="task-remove" onClick={onRemove}>
                     <MdRemoveCircleOutline className="icon" />
                 </div>
             </div>
