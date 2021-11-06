@@ -30,6 +30,9 @@ const App = () => {
           <div className="display-tasklist">
             <TaskList />
           </div>
+          <div className="task-panel">
+            Task Panel
+          </div>
         </div>
       </div>
     </AppContext.Provider>

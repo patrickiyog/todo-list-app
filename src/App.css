@@ -20,12 +20,12 @@ body {
 }
 
 .app-content {
-  width: 60%;
+  width: 80%;
   display: flex;
 }
 
 .tasklist-form-and-items {
-  width: 25%;
+  width: 20%;
   padding: 16px;
   background-color: #212121;
 }
@@ -33,6 +33,11 @@ body {
 .display-tasklist {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 50%;
   background-color: #f1f1f1;
+}
+
+.task-panel {
+  width: 30%;
+  background-color: aqua;
 }
