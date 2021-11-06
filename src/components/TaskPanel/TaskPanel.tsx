@@ -9,7 +9,7 @@ const TaskPanel = () => {
     const [taskLabels, setTaskLabels] = useState<string[]>([]);
 
     useEffect(() => {
-        if (taskLists && selectedTask) {
+        if (taskLists && selectedTask !== '') {
             const { listItems } = taskLists[selectedTaskList];
             for (const listItem of listItems) {
                 if (listItem.listItemId === selectedTask) {
@@ -17,6 +17,12 @@ const TaskPanel = () => {
                     setTaskLabels(listItem.labels);
                 }
             }
+            return;
+        }
+        if (selectedTask === '') {
+            setTaskName('');
+            setTaskLabels([]);
+            return;
         }
     }, [taskLists, selectedTask, selectedTaskList]);
 

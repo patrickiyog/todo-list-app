@@ -12,7 +12,8 @@ const TaskListForm = () => {
     const {
         taskLists,
         setTaskLists,
-        setSelectedTaskList
+        setSelectedTaskList,
+        setSelectedTask
     } = useAppContext();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -31,6 +32,7 @@ const TaskListForm = () => {
             newTaskLists[id] = newTaskList;
             setTaskLists(newTaskLists);
             setSelectedTaskList(id);
+            setSelectedTask('');
             setTaskListName('');
         }
     }

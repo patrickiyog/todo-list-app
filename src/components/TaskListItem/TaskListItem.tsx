@@ -11,11 +11,17 @@ const TaskListItem = ({ taskList }: Props) => {
 
     const { listId, listName, listItems } = taskList;
 
-    const { taskLists, selectedTaskList, setSelectedTaskList } = useAppContext();
+    const {
+        taskLists,
+        selectedTaskList,
+        setSelectedTaskList,
+        setSelectedTask
+    } = useAppContext();
 
     const handleOnClick = (): void => {
         if (taskLists) {
             setSelectedTaskList(listId);
+            setSelectedTask('');
         }
     }
 
