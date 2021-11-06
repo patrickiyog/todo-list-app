@@ -37,10 +37,10 @@
   color: #00c853;
 }
 
-.task-remove {
+.task-edit {
   display: flex;
   align-items: center;
   font-size: 18px;
-  color: rgb(238, 43, 43);
+  color: rgb(139, 139, 139);
   cursor: pointer;
 }

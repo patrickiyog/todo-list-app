@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListItem } from '../../interfaces/ListItem';
-import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdRemoveCircleOutline } from "react-icons/md";
+import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useAppContext } from '../../context/AppContext';
 import './TaskItem.css';
 
@@ -10,7 +11,13 @@ interface Props {
 
 const TaskItem = ({ task }: Props) => {
 
-    const { taskLists, selectedTaskList, setTaskLists, setSelectedTaskList } = useAppContext();
+    const {
+        taskLists,
+        selectedTaskList,
+        setTaskLists,
+        setSelectedTaskList,
+        setSelectedTask,
+    } = useAppContext();
 
     const completeTask = () => {
         if (task && taskLists !== null && selectedTaskList !== '') {
@@ -29,16 +36,9 @@ const TaskItem = ({ task }: Props) => {
         }
     }
 
-    const onRemove = () => {
-        if (task && taskLists !== null && selectedTaskList !== '') {
-            const newSelectedTaskList = taskLists[selectedTaskList];
-            const { listId, listItems } = newSelectedTaskList;
-            const newTasks = listItems.filter(listItem => listItem.listItemId !== task.listItemId);
-            const newTaskLists = { ...taskLists };
-            newSelectedTaskList.listItems = newTasks;
-            newTaskLists[listId] = newSelectedTaskList;
-            setTaskLists(newTaskLists);
-            setSelectedTaskList(newSelectedTaskList.listId);
+    const editTask = () => {
+        if (task) {
+            setSelectedTask(task.listItemId);
         }
     }
 
@@ -58,8 +58,8 @@ const TaskItem = ({ task }: Props) => {
                 <span className="task-name">
                     {task?.listItemName}
                 </span>
-                <div className="task-remove" onClick={onRemove}>
-                    <MdRemoveCircleOutline className="icon" />
+                <div className="task-edit">
+                    <BiDotsHorizontalRounded onClick={editTask} />
                 </div>
             </div>
         </div>

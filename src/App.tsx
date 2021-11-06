@@ -10,6 +10,7 @@ const App = () => {
 
   const [taskLists, setTaskLists] = useState<Lists | null>(null);
   const [selectedTaskList, setSelectedTaskList] = useState('');
+  const [selectedTask, setSelectedTask] = useState('');
 
   return (
     <AppContext.Provider
@@ -18,6 +19,8 @@ const App = () => {
         setTaskLists,
         selectedTaskList,
         setSelectedTaskList,
+        selectedTask,
+        setSelectedTask
       }}
     >
       <div className="app">
@@ -31,7 +34,7 @@ const App = () => {
             <TaskList />
           </div>
           <div className="task-panel">
-            Task Panel
+            {selectedTask}
           </div>
         </div>
       </div>
