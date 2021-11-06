@@ -70,6 +70,12 @@ const TaskItem = ({ task }: Props) => {
         }
     }
 
+    const onFocus = () => {
+        if (task) {
+            setSelectedTask(task.listItemId);
+        }
+    }
+
     const editTask = () => {
         if (task) {
             setSelectedTask(task.listItemId);
@@ -101,6 +107,7 @@ const TaskItem = ({ task }: Props) => {
                     <input
                         className="task-name"
                         value={taskName}
+                        onFocus={onFocus}
                         onChange={onInputChange}
                     />
                 </div>
