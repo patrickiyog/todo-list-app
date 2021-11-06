@@ -39,5 +39,6 @@ body {
 
 .task-panel {
   width: 30%;
+  padding: 16px;
   background-color: aqua;
 }

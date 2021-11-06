@@ -22,6 +22,7 @@ const TaskForm = () => {
                 listItemName: taskName,
                 completed: false,
                 selected: false,
+                labels: [],
             };
             const newSelectedTaskList = taskLists[selectedTaskList];
             const newTasks = [...newSelectedTaskList.listItems, newTask];

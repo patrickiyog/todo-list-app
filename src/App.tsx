@@ -5,6 +5,7 @@ import { Lists } from './interfaces/Lists';
 import TaskListForm from './components/TaskListForm/TaskListForm';
 import TaskListItems from './components/TaskListItems/TaskListItems';
 import TaskList from './components/TaskList/TaskList';
+import TaskPanel from './components/TaskPanel/TaskPanel';
 
 const App = () => {
 
@@ -34,7 +35,7 @@ const App = () => {
             <TaskList />
           </div>
           <div className="task-panel">
-            {selectedTask}
+            <TaskPanel />
           </div>
         </div>
       </div>
