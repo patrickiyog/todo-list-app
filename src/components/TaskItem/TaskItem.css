@@ -8,6 +8,12 @@
   margin-right: 5px;
 }
 
+.task-labels-container {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
 .task-content-container {
   flex-grow: 1;
   display: flex;

@@ -2,6 +2,7 @@ import React from 'react';
 import { ListItem } from '../../interfaces/ListItem';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
+import TaskLabel from '../TaskLabel/TaskLabel';
 import { useAppContext } from '../../context/AppContext';
 import './TaskItem.css';
 
@@ -53,8 +54,8 @@ const TaskItem = ({ task }: Props) => {
                         : '#ffffff'
             }}
         >
-            <div>
-                <div>Label</div>
+            <div className="task-labels-container">
+                <TaskLabel labelName={"High Priority"} />
             </div>
             <div className="task-content-container">
                 <div className="task-content">
