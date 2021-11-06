@@ -14,6 +14,7 @@ const TaskItem = ({ task }: Props) => {
     const {
         taskLists,
         selectedTaskList,
+        selectedTask,
         setTaskLists,
         setSelectedTaskList,
         setSelectedTask,
@@ -43,7 +44,15 @@ const TaskItem = ({ task }: Props) => {
     }
 
     return (
-        <div className="task">
+        <div
+            className="task"
+            style={{
+                backgroundColor:
+                    selectedTask === task?.listItemId
+                        ? '#e0e0e0'
+                        : '#ffffff'
+            }}
+        >
             <div className="task-content">
                 <div
                     className="task-completed"
@@ -61,8 +70,8 @@ const TaskItem = ({ task }: Props) => {
                 <div className="task-edit">
                     <BiDotsHorizontalRounded onClick={editTask} />
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
 
