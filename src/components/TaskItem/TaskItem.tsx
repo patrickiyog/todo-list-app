@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { ListItem } from '../../interfaces/ListItem';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -12,6 +12,9 @@ interface Props {
 
 const TaskItem = ({ task }: Props) => {
 
+    const [taskName, setTaskName] = useState('');
+    const [taskCompleted, setTaskCompleted] = useState(false);
+
     const {
         taskLists,
         selectedTaskList,
@@ -21,6 +24,13 @@ const TaskItem = ({ task }: Props) => {
         setSelectedTask,
     } = useAppContext();
 
+    useEffect(() => {
+        if (task !== null) {
+            setTaskName(task.listItemName);
+            setTaskCompleted(task.completed);
+        }
+    }, [task]);
+
     const completeTask = () => {
         if (task && taskLists !== null && selectedTaskList !== '') {
             const newSelectedTaskList = taskLists[selectedTaskList];
@@ -28,13 +38,35 @@ const TaskItem = ({ task }: Props) => {
             const newTasks = [...listItems];
             for (const newTask of newTasks) {
                 if (newTask.listItemId === task.listItemId) {
-                    newTask.completed = !task.completed;
+                    const isCompleted = !task.completed;
+                    setTaskCompleted(isCompleted)
+                    newTask.completed = isCompleted;
                 }
             }
             const newTaskLists = { ...taskLists };
             newTaskLists[listId] = newSelectedTaskList;
             setTaskLists(newTaskLists);
             setSelectedTaskList(newSelectedTaskList.listId);
+        }
+    }
+
+    const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        if (task && taskLists !== null && selectedTaskList !== '') {
+            const newSelectedTaskList = taskLists[selectedTaskList];
+            const { listId, listItems } = newSelectedTaskList;
+            const newTasks = [...listItems];
+            for (const newTask of newTasks) {
+                if (newTask.listItemId === task.listItemId) {
+                    const newTaskName = event.target.value;
+                    setTaskName(newTaskName)
+                    newTask.listItemName = (newTaskName);
+                }
+            }
+            const newTaskLists = { ...taskLists };
+            newTaskLists[listId] = newSelectedTaskList;
+            setTaskLists(newTaskLists);
+            setSelectedTaskList(newSelectedTaskList.listId);
+            setSelectedTask(task.listItemId);
         }
     }
 
@@ -61,12 +93,16 @@ const TaskItem = ({ task }: Props) => {
                 <div className="task-content">
                     <div className="task-completed" onClick={completeTask}>
                         {
-                            task?.completed ?
+                            taskCompleted ?
                                 <MdOutlineCheckBox className="completed-true" /> :
                                 <MdOutlineCheckBoxOutlineBlank className="completed-false" />
                         }
                     </div>
-                    <span className="task-name">{task?.listItemName}</span>
+                    <input
+                        className="task-name"
+                        value={taskName}
+                        onChange={onInputChange}
+                    />
                 </div>
                 <div className="task-edit">
                     <BiDotsHorizontalRounded onClick={editTask} />
