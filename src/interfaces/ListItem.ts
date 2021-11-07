@@ -3,5 +3,5 @@ export interface ListItem {
     listItemName: string;
     completed: boolean;
     selected: boolean;
-    labels: string[];
+    label: string;
 }

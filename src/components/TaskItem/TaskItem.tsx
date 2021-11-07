@@ -14,6 +14,7 @@ const TaskItem = ({ task }: Props) => {
 
     const [taskName, setTaskName] = useState('');
     const [taskCompleted, setTaskCompleted] = useState(false);
+    const [taskLabel, setTaskLabel] = useState('');
 
     const {
         taskLists,
@@ -93,7 +94,6 @@ const TaskItem = ({ task }: Props) => {
             }}
         >
             <div className="task-labels-container">
-                <TaskLabel labelName={"High Priority"} />
             </div>
             <div className="task-content-container">
                 <div className="task-content">

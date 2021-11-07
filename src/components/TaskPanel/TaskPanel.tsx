@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
+import TaskLabelForm from '../TaskLabelForm/TaskLabelForm';
 
 const TaskPanel = () => {
 
     const { taskLists, selectedTaskList, selectedTask } = useAppContext();
 
     const [taskName, setTaskName] = useState<string>('');
-    const [taskLabels, setTaskLabels] = useState<string[]>([]);
+    const [taskLabel, setTaskLabel] = useState<string>('');
 
     useEffect(() => {
         if (taskLists && selectedTask !== '') {
@@ -14,22 +15,22 @@ const TaskPanel = () => {
             for (const listItem of listItems) {
                 if (listItem.listItemId === selectedTask) {
                     setTaskName(listItem.listItemName);
-                    setTaskLabels(listItem.labels);
+                    setTaskLabel(listItem.label);
                 }
             }
             return;
         }
         if (selectedTask === '') {
             setTaskName('');
-            setTaskLabels([]);
+            setTaskLabel('');
             return;
         }
     }, [taskLists, selectedTask, selectedTaskList]);
 
     return (
         <div>
-            <div>{taskName}</div>
-            <div>{taskLabels}</div>
+            <TaskLabelForm />
+            <div>Delete Task</div>
         </div>
     );
 
