@@ -1,7 +1,6 @@
 import React, { MouseEvent, useState } from 'react';
-import TaskLabel from '../TaskLabel/TaskLabel';
 import './TaskLabelForm.css';
-import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
+import TaskLabelFormItem from '../TaskLabelFormItem/TaskLabelFormItem';
 
 interface Labels {
     [label: string]: boolean;
@@ -32,38 +31,28 @@ const TaskLabelForm = () => {
         <div>
             <div className="label-title">Labels</div>
             <div className="task-labels">
-                <div className="task-label-container">
-                    <div className="task-label-radio" >
-                        {
-                            labels.high
-                                ? <MdRadioButtonChecked id="high" onClick={handleClick} />
-                                : <MdRadioButtonUnchecked id="high" onClick={handleClick} />
-                        }
-                    </div>
-                    <TaskLabel labelName={"High Priority"} type={"HP"} />
-                </div>
-                <div className="task-label-container">
-                    <div className="task-label-radio">
-                        {
-                            labels.medium
-                                ? <MdRadioButtonChecked id="medium" onClick={handleClick} />
-                                : <MdRadioButtonUnchecked id="medium" onClick={handleClick} />
-                        }
-                    </div>
-                    <TaskLabel labelName={"Medium Priority"} type={"MP"} />
-                </div>
-                <div className="task-label-container">
-                    <div id="low" className="task-label-radio">
-                        {
-                            labels.low
-                                ? <MdRadioButtonChecked id="low" onClick={handleClick} />
-                                : <MdRadioButtonUnchecked id="low" onClick={handleClick} />
-                        }
-                    </div>
-                    <TaskLabel labelName={"Low Priority"} type={"LP"} />
-                </div>
+                <TaskLabelFormItem
+                    id="high"
+                    selected={labels.high}
+                    handleClick={handleClick}
+                    labelName="High Priority"
+                    type="HP"
+                />
+                <TaskLabelFormItem
+                    id="medium"
+                    selected={labels.medium}
+                    handleClick={handleClick}
+                    labelName="Medium Priority"
+                    type="MP"
+                />
+                <TaskLabelFormItem
+                    id="low"
+                    selected={labels.low}
+                    handleClick={handleClick}
+                    labelName="Low Priority"
+                    type="LP"
+                />
             </div>
-
         </div>
     );
 
