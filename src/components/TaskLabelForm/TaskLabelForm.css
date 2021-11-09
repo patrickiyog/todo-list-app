@@ -1,1 +1,21 @@
+.label-title {
+    color: rgb(0, 0, 0);
+}
 
+.task-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-labels .task-label-container {
+  margin: 8px 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.task-label-radio {
+  display: flex;
+  align-items: center;
+  color: #aaaaaa;
+  margin-right: 14px;
+}

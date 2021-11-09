@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import TaskLabel from '../TaskLabel/TaskLabel';
 import './TaskLabelForm.css';
-// import { useAppContext } from '../../context/AppContext';
-import TaskLabelFormItem from './TaskLabelFormItem';
+import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
 
 const TaskLabelForm = () => {
-
+    const [selectedLabel, setSelectedLabel] = useState('');
     return (
         <div>
-            <div>Labels</div>
-            <TaskLabelFormItem labelName="High Priority" type={"HP"} />
-            <TaskLabelFormItem labelName="Medium Priority" type={"MP"} />
-            <TaskLabelFormItem labelName="Low Priority" type={"LP"} />
+            <div className="label-title">Labels</div>
+            <div className="task-labels">
+                <div className="task-label-container">
+                    <div className="task-label-radio">
+                        <MdRadioButtonUnchecked />
+                    </div>
+                    <TaskLabel labelName={"High Priority"} type={"HP"} />
+                </div>
+                <div className="task-label-container">
+                    <div className="task-label-radio">
+                        <MdRadioButtonUnchecked />
+                    </div>
+                    <TaskLabel labelName={"Medium Priority"} type={"MP"} />
+                </div>
+                <div className="task-label-container">
+                    <div className="task-label-radio">
+                        <MdRadioButtonUnchecked />
+                    </div>
+                    <TaskLabel labelName={"Low Priority"} type={"LP"} />
+                </div>
+            </div>
+
         </div>
     );
 }

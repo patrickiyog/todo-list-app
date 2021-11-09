@@ -93,8 +93,8 @@ const TaskItem = ({ task }: Props) => {
                         : '#ffffff'
             }}
         >
-            <div className="task-labels-container">
-            </div>
+            {/* <div className="task-labels-container">
+            </div> */}
             <div className="task-content-container">
                 <div className="task-content">
                     <div className="task-completed" onClick={completeTask}>
