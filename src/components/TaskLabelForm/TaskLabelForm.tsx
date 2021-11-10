@@ -1,12 +1,17 @@
-import React, { MouseEvent, useState } from 'react';
+import React, { MouseEvent, useState, useEffect } from 'react';
 import './TaskLabelForm.css';
+import { useAppContext } from '../../context/AppContext';
 import TaskLabelFormItem from '../TaskLabelFormItem/TaskLabelFormItem';
-
-interface Labels {
-    [label: string]: boolean;
-}
+import { Labels } from '../../interfaces/Labels';
 
 const TaskLabelForm = () => {
+
+    const {
+        taskLists,
+        selectedTaskList,
+        selectedTask,
+        setTaskLists,
+    } = useAppContext();
 
     const [labels, setLabels] = useState<Labels>({
         high: false,
@@ -14,17 +19,42 @@ const TaskLabelForm = () => {
         low: false
     });
 
-    const handleClick = (event: MouseEvent<SVGAElement>) => {
-        const clickedLabel = event.currentTarget.id;
-        const newLabels = { ...labels };
-        for (const label in newLabels) {
-            if (label === clickedLabel) {
-                newLabels[clickedLabel] = !newLabels[clickedLabel];
-            } else {
-                newLabels[label] = false;
+    useEffect(() => {
+        if (taskLists && selectedTask !== '') {
+            const { listItems } = taskLists[selectedTaskList];
+            for (const listItem of listItems) {
+                if (listItem.listItemId === selectedTask) {
+                    setLabels(listItem.labels);
+                }
             }
+            return;
         }
-        setLabels(newLabels);
+    }, [taskLists, selectedTask, selectedTaskList]);
+
+    const handleClick = (event: MouseEvent<SVGAElement>) => {
+        if (taskLists !== null && selectedTaskList !== '' && selectedTask !== '') {
+            const newSelectedTaskList = taskLists[selectedTaskList];
+            const { listId, listItems } = newSelectedTaskList;
+            for (const newTask of [...listItems]) {
+                if (newTask.listItemId === selectedTask) {
+                    const clickedLabel = event.currentTarget.id;
+                    const newLabels = { ...labels };
+                    for (const label in newLabels) {
+                        if (label === clickedLabel) {
+                            newLabels[clickedLabel] = !newLabels[clickedLabel];
+                        } else {
+                            newLabels[label] = false;
+                        }
+                    }
+                    newTask.labels = newLabels;
+                    setLabels(newLabels);
+                    break;
+                }
+            }
+            const newTaskLists = { ...taskLists };
+            newTaskLists[listId] = newSelectedTaskList;
+            setTaskLists(newTaskLists);
+        }
     }
 
     return (

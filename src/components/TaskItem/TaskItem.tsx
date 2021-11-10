@@ -1,8 +1,8 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { ListItem } from '../../interfaces/ListItem';
+import { Labels } from '../../interfaces/Labels';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
-import TaskLabel from '../TaskLabel/TaskLabel';
 import { useAppContext } from '../../context/AppContext';
 import './TaskItem.css';
 
@@ -14,7 +14,7 @@ const TaskItem = ({ task }: Props) => {
 
     const [taskName, setTaskName] = useState('');
     const [taskCompleted, setTaskCompleted] = useState(false);
-    const [taskLabel, setTaskLabel] = useState('');
+    const [taskLabels, setTaskLabels] = useState<Labels>({});
 
     const {
         taskLists,
@@ -29,6 +29,7 @@ const TaskItem = ({ task }: Props) => {
         if (task !== null) {
             setTaskName(task.listItemName);
             setTaskCompleted(task.completed);
+            setTaskLabels(task.labels);
         }
     }, [task]);
 
