@@ -35,7 +35,7 @@ const App = () => {
             <TaskList />
           </div>
           <div className="task-panel">
-            <TaskPanel />
+            {selectedTask && <TaskPanel />}
           </div>
         </div>
       </div>

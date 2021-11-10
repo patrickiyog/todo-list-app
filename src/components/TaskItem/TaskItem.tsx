@@ -78,8 +78,13 @@ const TaskItem = ({ task }: Props) => {
     }
 
     const editTask = () => {
+        if (selectedTask === task?.listItemId) {
+            setSelectedTask('');
+            return;
+        }
         if (task) {
             setSelectedTask(task.listItemId);
+            return;
         }
     }
 
