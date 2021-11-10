@@ -29,7 +29,7 @@ const TaskLabelForm = () => {
 
     return (
         <div>
-            <div className="label-title">Labels</div>
+            <div className="label-title">Add a label</div>
             <div className="task-labels">
                 <TaskLabelFormItem
                     id="high"
