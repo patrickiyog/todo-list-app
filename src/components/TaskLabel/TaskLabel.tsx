@@ -3,19 +3,18 @@ import './TaskLabel.css';
 
 interface Props {
     labelName: string;
-    type: string;
 }
 
-const TaskLabel = ({ labelName, type }: Props) => {
+const TaskLabel = ({ labelName }: Props) => {
 
     const getLabelColour = () => {
-        if (type === 'HP') {
+        if (labelName === 'High') {
             return '#c62828';
         }
-        if (type === 'MP') {
+        if (labelName === 'Medium') {
             return '#ff6f00';
         }
-        if (type === 'LP') {
+        if (labelName === 'Low') {
             return '#43a047';
         }
     }
@@ -23,9 +22,11 @@ const TaskLabel = ({ labelName, type }: Props) => {
     return (
         <div
             className="task-label"
-            style={{ backgroundColor: getLabelColour() }}
+            style={{
+                backgroundColor: getLabelColour()
+            }}
         >
-            {labelName}
+            {labelName} Priority
         </div>
     );
 

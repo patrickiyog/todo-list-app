@@ -61,25 +61,22 @@ const TaskLabelForm = () => {
         <div>
             <div className="task-labels">
                 <TaskLabelFormItem
-                    id="high"
-                    selected={labels.high}
+                    id="HIGH"
+                    selected={labels.HIGH}
                     handleClick={handleClick}
-                    labelName="High Priority"
-                    type="HP"
+                    labelName="High"
                 />
                 <TaskLabelFormItem
-                    id="medium"
-                    selected={labels.medium}
+                    id="MEDIUM"
+                    selected={labels.MEDIUM}
                     handleClick={handleClick}
-                    labelName="Medium Priority"
-                    type="MP"
+                    labelName="Medium"
                 />
                 <TaskLabelFormItem
-                    id="low"
-                    selected={labels.low}
+                    id="LOW"
+                    selected={labels.LOW}
                     handleClick={handleClick}
-                    labelName="Low Priority"
-                    type="LP"
+                    labelName="Low"
                 />
             </div>
         </div>

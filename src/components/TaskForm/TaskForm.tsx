@@ -23,9 +23,9 @@ const TaskForm = () => {
                 completed: false,
                 selected: false,
                 labels: {
-                    high: false,
-                    medium: false,
-                    low: false
+                    HIGH: false,
+                    MEDIUM: false,
+                    LOW: false
                 },
             };
             const newSelectedTaskList = taskLists[selectedTaskList];

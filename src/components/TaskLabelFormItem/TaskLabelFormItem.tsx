@@ -7,20 +7,27 @@ interface Props {
     selected: boolean;
     handleClick: (event: MouseEvent<SVGAElement>) => void;
     labelName: string;
-    type: string;
 }
 
-const TaskLabelFormItem = ({ id, selected, handleClick, labelName, type }: Props) => {
+const TaskLabelFormItem = ({ id, selected, handleClick, labelName }: Props) => {
     return (
         <div className="task-label-container">
             <div className="task-label-radio" >
                 {
                     selected
-                        ? <MdRadioButtonChecked id={id} onClick={handleClick} />
-                        : <MdRadioButtonUnchecked id={id} onClick={handleClick} />
+                        ?
+                        <MdRadioButtonChecked
+                            id={id}
+                            onClick={handleClick}
+                        />
+                        :
+                        <MdRadioButtonUnchecked
+                            id={id}
+                            onClick={handleClick}
+                        />
                 }
             </div>
-            <TaskLabel labelName={labelName} type={type} />
+            <TaskLabel labelName={labelName} />
         </div>
     )
 }

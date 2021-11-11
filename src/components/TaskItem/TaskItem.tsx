@@ -1,10 +1,10 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { ListItem } from '../../interfaces/ListItem';
-import { Labels } from '../../interfaces/Labels';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useAppContext } from '../../context/AppContext';
 import './TaskItem.css';
+import TaskLabel from '../TaskLabel/TaskLabel';
 
 interface Props {
     task: ListItem | null;
@@ -14,7 +14,7 @@ const TaskItem = ({ task }: Props) => {
 
     const [taskName, setTaskName] = useState('');
     const [taskCompleted, setTaskCompleted] = useState(false);
-    const [taskLabels, setTaskLabels] = useState<Labels>({});
+    const [taskLabelName, setTaskLabelName] = useState('');
 
     const {
         taskLists,
@@ -29,9 +29,26 @@ const TaskItem = ({ task }: Props) => {
         if (task !== null) {
             setTaskName(task.listItemName);
             setTaskCompleted(task.completed);
-            setTaskLabels(task.labels);
+            for (const label in task.labels) {
+                if (task.labels[label] === true) {
+                    if (label === 'HIGH') {
+                        setTaskLabelName('High');
+                        break;
+                    }
+                    if (label === 'MEDIUM') {
+                        setTaskLabelName('Medium');
+                        break;
+                    }
+                    if (label === 'LOW') {
+                        setTaskLabelName('Low');
+                        break;
+                    }
+                } else {
+                    setTaskLabelName('');
+                }
+            }
         }
-    }, [task]);
+    }, [task, taskLists]);
 
     const completeTask = () => {
         if (task && taskLists !== null && selectedTaskList !== '') {
@@ -99,8 +116,12 @@ const TaskItem = ({ task }: Props) => {
                         : '#ffffff'
             }}
         >
-            {/* <div className="task-labels-container">
-            </div> */}
+            {
+                taskLabelName !== '' &&
+                <div className="task-labels-container">
+                    <TaskLabel labelName={taskLabelName} />
+                </div>
+            }
             <div className="task-content-container">
                 <div className="task-content">
                     <div className="task-completed" onClick={completeTask}>
