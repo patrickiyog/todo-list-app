@@ -1,7 +1,6 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, SyntheticEvent } from 'react';
 import { ListItem } from '../../interfaces/ListItem';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useAppContext } from '../../context/AppContext';
 import './TaskItem.css';
 import TaskLabel from '../TaskLabel/TaskLabel';
@@ -50,7 +49,8 @@ const TaskItem = ({ task }: Props) => {
         }
     }, [task, taskLists]);
 
-    const completeTask = () => {
+    const completeTask = (event: SyntheticEvent) => {
+        event.stopPropagation();
         if (task && taskLists !== null && selectedTaskList !== '') {
             const newSelectedTaskList = taskLists[selectedTaskList];
             const { listId, listItems } = newSelectedTaskList;
@@ -79,6 +79,7 @@ const TaskItem = ({ task }: Props) => {
                     const newTaskName = event.target.value;
                     setTaskName(newTaskName)
                     newTask.listItemName = (newTaskName);
+                    break;
                 }
             }
             const newTaskLists = { ...taskLists };
@@ -89,13 +90,7 @@ const TaskItem = ({ task }: Props) => {
         }
     }
 
-    const onFocus = () => {
-        if (task) {
-            setSelectedTask(task.listItemId);
-        }
-    }
-
-    const editTask = () => {
+    const selectTask = () => {
         if (selectedTask === task?.listItemId) {
             setSelectedTask('');
             return;
@@ -115,6 +110,7 @@ const TaskItem = ({ task }: Props) => {
                         ? '#e0e0e0'
                         : '#ffffff'
             }}
+            onClick={selectTask}
         >
             {
                 taskLabelName !== '' &&
@@ -134,12 +130,8 @@ const TaskItem = ({ task }: Props) => {
                     <input
                         className="task-name"
                         value={taskName}
-                        onFocus={onFocus}
                         onChange={onInputChange}
                     />
-                </div>
-                <div className="task-edit">
-                    <BiDotsHorizontalRounded onClick={editTask} />
                 </div>
             </div>
         </div>
