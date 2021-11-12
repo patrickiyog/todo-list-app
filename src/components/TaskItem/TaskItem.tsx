@@ -74,9 +74,9 @@ const TaskItem = ({ task }: Props) => {
             const newSelectedTaskList = taskLists[selectedTaskList];
             const { listId, listItems } = newSelectedTaskList;
             const newTasks = [...listItems];
+            const newTaskName = event.target.value;
             for (const newTask of newTasks) {
                 if (newTask.listItemId === task.listItemId) {
-                    const newTaskName = event.target.value;
                     setTaskName(newTaskName)
                     newTask.listItemName = (newTaskName);
                     break;
@@ -102,6 +102,22 @@ const TaskItem = ({ task }: Props) => {
         if (task) {
             setSelectedTask(task.listItemId);
             return;
+        }
+    }
+
+    const onBlurChange = () => {
+        if (taskName === '') {
+            if (task && taskLists !== null && selectedTaskList !== '') {
+                const newSelectedTaskList = taskLists[selectedTaskList];
+                const { listId, listItems } = newSelectedTaskList;
+                const newTasks = [...listItems].filter(newTask => newTask.listItemId !== task.listItemId);
+                const newTaskLists = { ...taskLists };
+                newTaskLists[listId] = newSelectedTaskList;
+                newSelectedTaskList.listItems = newTasks;
+                setTaskLists(newTaskLists);
+                setSelectedTaskList(newSelectedTaskList.listId);
+                setSelectedTask(task.listItemId);
+            }
         }
     }
 
@@ -136,6 +152,7 @@ const TaskItem = ({ task }: Props) => {
                         value={taskName}
                         onClick={onInputClick}
                         onChange={onInputChange}
+                        onBlur={onBlurChange}
                     />
                 </div>
             </div>
