@@ -90,11 +90,15 @@ const TaskItem = ({ task }: Props) => {
         }
     }
 
-    const selectTask = () => {
-        if (selectedTask === task?.listItemId) {
-            setSelectedTask('');
+    const onInputClick = (event: SyntheticEvent) => {
+        event.stopPropagation();
+        if (task) {
+            setSelectedTask(task.listItemId);
             return;
         }
+    }
+
+    const selectTask = () => {
         if (task) {
             setSelectedTask(task.listItemId);
             return;
@@ -130,6 +134,7 @@ const TaskItem = ({ task }: Props) => {
                     <input
                         className="task-name"
                         value={taskName}
+                        onClick={onInputClick}
                         onChange={onInputChange}
                     />
                 </div>
