@@ -31,7 +31,7 @@ const TaskLabelForm = () => {
         }
     }, [taskLists, selectedTask, selectedTaskList]);
 
-    const handleClick = (event: MouseEvent<SVGAElement>) => {
+    const handleClick = (event: MouseEvent<HTMLDivElement>) => {
         if (taskLists !== null && selectedTaskList !== '' && selectedTask !== '') {
             const newSelectedTaskList = taskLists[selectedTaskList];
             const { listId, listItems } = newSelectedTaskList;

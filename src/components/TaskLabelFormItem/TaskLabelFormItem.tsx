@@ -5,26 +5,20 @@ import TaskLabel from '../TaskLabel/TaskLabel';
 interface Props {
     id: string;
     selected: boolean;
-    handleClick: (event: MouseEvent<SVGAElement>) => void;
+    handleClick: (event: MouseEvent<HTMLDivElement>) => void;
     labelName: string;
 }
 
 const TaskLabelFormItem = ({ id, selected, handleClick, labelName }: Props) => {
     return (
-        <div className="task-label-container">
+        <div className="task-label-container" id={id} onClick={handleClick}>
             <div className="task-label-radio" >
                 {
                     selected
                         ?
-                        <MdRadioButtonChecked
-                            id={id}
-                            onClick={handleClick}
-                        />
+                        <MdRadioButtonChecked />
                         :
-                        <MdRadioButtonUnchecked
-                            id={id}
-                            onClick={handleClick}
-                        />
+                        <MdRadioButtonUnchecked />
                 }
             </div>
             <TaskLabel labelName={labelName} />
