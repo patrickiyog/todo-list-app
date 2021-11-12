@@ -20,5 +20,5 @@ This application gives a user the ability to create many task lists.
 - [ ] Delete a tasklist
 - [ ] Rename a tasklist
 - [x] Rename a task
-- [ ] Add a label on a task
-- [ ] Remove a label on a task
+- [x] Add a label on a task
+- [x] Remove a label on a task
