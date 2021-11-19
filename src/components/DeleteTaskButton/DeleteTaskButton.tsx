@@ -1,8 +1,9 @@
 import React from 'react';
+import './DeleteTaskButton.css';
 
 const DeleteTaskButton = () => {
     return (
-        <div>Delete Task Button</div>
+        <button className="delete-task-button">Remove Task</button>
     )
 }
 
