@@ -6,17 +6,17 @@
 }
 
 .task-list-name {
+  color: #ffffff;
   font-size: 24px;
 }
 
 .task-list-details {
   margin: 5px 0px;
   font-size: 16px;
-  font-style: italic;
-  color: rgb(141, 141, 141);
+  color: #ffffffc0;
 }
 
-.task-list-list{
+.task-list-list {
   flex-grow: 1;
   overflow: hidden;
   position: relative;

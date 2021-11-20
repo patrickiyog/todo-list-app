@@ -3,7 +3,6 @@ import { ListItem } from '../../interfaces/ListItem';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import { useAppContext } from '../../context/AppContext';
 import './TaskItem.css';
-import TaskLabel from '../TaskLabel/TaskLabel';
 
 interface Props {
     task: ListItem | null;
@@ -13,12 +12,11 @@ const TaskItem = ({ task }: Props) => {
 
     const [taskName, setTaskName] = useState('');
     const [taskCompleted, setTaskCompleted] = useState(false);
-    const [taskLabelName, setTaskLabelName] = useState('');
+    const [taskLabelColor, setTaskLabelColor] = useState('');
 
     const {
         taskLists,
         selectedTaskList,
-        selectedTask,
         setTaskLists,
         setSelectedTaskList,
         setSelectedTask,
@@ -31,19 +29,19 @@ const TaskItem = ({ task }: Props) => {
             for (const label in task.labels) {
                 if (task.labels[label] === true) {
                     if (label === 'HIGH') {
-                        setTaskLabelName('High');
+                        setTaskLabelColor('#c62828');
                         break;
                     }
                     if (label === 'MEDIUM') {
-                        setTaskLabelName('Medium');
+                        setTaskLabelColor('#ff6f00');
                         break;
                     }
                     if (label === 'LOW') {
-                        setTaskLabelName('Low');
+                        setTaskLabelColor('#43a047');
                         break;
                     }
                 } else {
-                    setTaskLabelName('');
+                    setTaskLabelColor('#212121');
                 }
             }
         }
@@ -124,20 +122,11 @@ const TaskItem = ({ task }: Props) => {
     return (
         <div
             className="task"
-            style={{
-                backgroundColor:
-                    selectedTask === task?.listItemId
-                        ? '#e0e0e0'
-                        : '#ffffff'
-            }}
             onClick={selectTask}
+            style={{
+                borderLeft: `5px solid ${taskLabelColor}`,
+            }}
         >
-            {
-                taskLabelName !== '' &&
-                <div className="task-labels-container">
-                    <TaskLabel labelName={taskLabelName} />
-                </div>
-            }
             <div className="task-content-container">
                 <div className="task-content">
                     <div className="task-completed" onClick={completeTask}>

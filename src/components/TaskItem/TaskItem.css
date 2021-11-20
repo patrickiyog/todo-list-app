@@ -6,6 +6,7 @@
   border-radius: 5px;
   margin-bottom: 12px;
   margin-right: 5px;
+  background-color: #212121;
 }
 
 .task-labels-container {
@@ -33,6 +34,7 @@
   border: none;
   outline: none;
   background-color: transparent;
+  color: #ffffff;
 }
 
 .task-content .task-completed {

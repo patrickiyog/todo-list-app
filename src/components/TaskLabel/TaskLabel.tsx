@@ -26,7 +26,7 @@ const TaskLabel = ({ labelName }: Props) => {
                 backgroundColor: getLabelColour()
             }}
         >
-            {labelName} Priority
+            {labelName}
         </div>
     );
 
