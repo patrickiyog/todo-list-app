@@ -2,7 +2,9 @@ import React, { useState, useEffect, ChangeEvent, SyntheticEvent } from 'react';
 import { ListItem } from '../../interfaces/ListItem';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import { useAppContext } from '../../context/AppContext';
+import { HiOutlineDotsVertical } from "react-icons/hi";
 import './TaskItem.css';
+import TaskLabelForm from '../TaskLabelForm/TaskLabelForm';
 
 interface Props {
     task: ListItem | null;
@@ -119,6 +121,14 @@ const TaskItem = ({ task }: Props) => {
         }
     }
 
+    const handleClick = (event: SyntheticEvent) => {
+        event.stopPropagation();
+        if (task) {
+            setSelectedTask(task.listItemId);
+            document.getElementById('three-dot-menu-content')?.classList.toggle('show');
+        }
+    }
+
     return (
         <div
             className="task"
@@ -143,6 +153,22 @@ const TaskItem = ({ task }: Props) => {
                         onChange={onInputChange}
                         onBlur={onBlurChange}
                     />
+                </div>
+                <div
+                    className="three-dot-menu"
+                    onClick={handleClick}
+                >
+                    <div
+                        className="three-dot-menu-button"
+                    >
+                        <HiOutlineDotsVertical />
+                    </div>
+                    <div
+                        id="three-dot-menu-content"
+                        className="three-dot-menu-content"
+                    >
+                        <TaskLabelForm />
+                    </div>
                 </div>
             </div>
         </div>

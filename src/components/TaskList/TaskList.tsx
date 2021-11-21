@@ -3,7 +3,6 @@ import './TaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
 import { useAppContext } from '../../context/AppContext';
-import { MdList } from 'react-icons/md/'
 import { ListItem } from '../../interfaces/ListItem';
 
 const TaskList = () => {
@@ -40,7 +39,7 @@ const TaskList = () => {
         if (listName) {
             return (
                 <>
-                    <div>
+                    <div className="task-list-name-details">
                         <div className="task-list-name">{listName}</div>
                         <div className="task-list-details">{numCompletedTask}</div>
                     </div>
@@ -57,8 +56,7 @@ const TaskList = () => {
         } else {
             return (
                 <div className="tasklists-empty">
-                    <MdList className="icon" />
-                    <div className="text">Create a task list</div>
+                    <div className="text">There are no task lists to show...</div>
                 </div>
             )
         }

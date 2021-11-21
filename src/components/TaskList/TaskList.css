@@ -22,6 +22,10 @@
   position: relative;
 }
 
+.task-list-name-details {
+  margin-bottom: 10px;
+}
+
 .task-list-list-content {
   position: absolute;
   top: 0;

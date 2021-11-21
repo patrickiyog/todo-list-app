@@ -1,17 +1,18 @@
 .task-panel-component {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.task-panel-item-task-label-form {
-    display: flex;
-    justify-content: center;
+.task-panel-item-task-label-form-head {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #ffffffd0;
 }
 
 .task-panel-item-delete-button {
-    min-height: 50px;
-    display: flex;
-    justify-content: center;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
 }
