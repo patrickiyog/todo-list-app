@@ -6,8 +6,15 @@
 }
 
 .task-list-name {
+  border: none;
+  background-color: transparent;
   color: #ffffff;
   font-size: 24px;
+}
+
+.task-list-name:focus {
+  border: none;
+  outline: none;
 }
 
 .task-list-details {
