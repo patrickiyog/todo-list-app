@@ -6,23 +6,8 @@
   display: flex;
   align-items: center;
   font-size: 18px;
-}
-
-.icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 25px;
-  width: 30px;
-  background-color: #b4b4b4;
-  color: #000000;
-  border-radius: 3px;
-}
-
-.task-list-item-container .icon {
-  font-size: 24px;
-  background-color: #b4b4b4;
-  color: #ffffff;
+  background-color: #525252;
+  border-radius: 5px;
 }
 
 .task-list-item-container input {

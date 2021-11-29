@@ -1,50 +1,41 @@
 .task-form {
-    min-height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 5px;
-    margin: 5px 0px;
-    padding: 0px 10px;
-    background-color: #c2c2c2;
-  }
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+  margin: 5px 0px;
+  padding: 0px 10px;
+  background-color: #525252;
+}
 
-  .task-form-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-  
-  .input-container {
-    display: flex;
-    flex-direction: row;
-    border-radius: 8px;
-    width: 100%;
-  }
-  
-  .input-container input {
-    width: 100%;
-    padding: 0px;
-    font-size: 16px;
-    border: none;
-    background-color: transparent;
-    color: #000000;
-  }
-  
-  .input-container input::placeholder {
-    color: #000000;
-  }
+.task-form-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
 
-  .input-container input:focus {
-    outline: none;
-  }
-  
-  .task-form-container .icon-container {
-    display: flex;
-    justify-content: center;
-    margin-right: 10px;
-    font-size: 24px;
-    width: 5%;
-    color: #000000;
-    background-color: transparent;
-  }
+.input-container {
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 16px 8px;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.input-container input::placeholder {
+  color: #ffffff;
+  opacity: 0.6;
+}
+
+.input-container input:focus {
+  outline: none;
+}

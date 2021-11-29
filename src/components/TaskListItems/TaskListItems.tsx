@@ -1,4 +1,5 @@
 import React from 'react';
+import './TaskListItems.css';
 import { useAppContext } from '../../context/AppContext';
 import TaskListItem from '../TaskListItem/TaskListItem';
 
@@ -18,7 +19,7 @@ const TaskListItems = () => {
         return null;
     }
 
-    return (<div>{mapTaskListItem()}</div>);
+    return (<div className="task-list-items">{mapTaskListItem()}</div>);
 
 }
 

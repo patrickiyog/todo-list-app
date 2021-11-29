@@ -1,7 +1,6 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './TaskForm.css';
 import { useAppContext } from '../../context/AppContext';
-import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 import { ListItem } from '../../interfaces/ListItem';
 
@@ -41,9 +40,6 @@ const TaskForm = () => {
     return (
         <div className="task-form">
             <div className="task-form-container">
-                <div className="icon-container">
-                    <MdAdd />
-                </div>
                 <div className="input-container">
                     <input
                         type="text"
@@ -53,7 +49,6 @@ const TaskForm = () => {
                         onChange={handleChange}
                         onKeyDown={addTask}
                         autoComplete="off"
-                        maxLength={60}
                     />
                 </div>
             </div>

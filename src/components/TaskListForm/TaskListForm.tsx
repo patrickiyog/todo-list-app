@@ -2,7 +2,6 @@ import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './TaskListForm.css';
 import { useAppContext } from '../../context/AppContext';
 import { List } from '../../interfaces/List';
-import { MdAdd } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 
 const TaskListForm = () => {
@@ -40,9 +39,6 @@ const TaskListForm = () => {
     return (
         <div className="task-lists">
             <div className="task-list-item-container">
-                <div className="icon-container">
-                    <MdAdd />
-                </div>
                 <input
                     placeholder="Create a task list"
                     value={taskListName}

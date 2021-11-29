@@ -27,7 +27,6 @@ const App = () => {
         <div className="app-content">
           <div className="tasklist-form-and-items">
             <TaskListForm />
-            <hr />
             <TaskListItems />
           </div>
           <div className="display-tasklist">

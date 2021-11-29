@@ -43,7 +43,7 @@ const TaskList = () => {
     const onKeyDown = (event: KeyboardEvent) => {
         if (event.key === 'Enter') {
             if (input !== '') {
-            
+
             } else {
                 setInput(listName);
             }
@@ -85,8 +85,6 @@ const TaskList = () => {
                     </div>
                 </>
             );
-        } else {
-            return <div>No task list to show. Start by creating a task list...</div>
         }
     }
 
