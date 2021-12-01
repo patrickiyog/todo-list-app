@@ -25,11 +25,11 @@ const App = () => {
     >
       <div className="app">
         <div className="app-content">
-          <div className="tasklist-form-and-items">
+          <div className="left">
             <TaskListForm />
             <TaskListItems />
           </div>
-          <div className="display-tasklist">
+          <div className="centre">
             <TaskList />
           </div>
         </div>

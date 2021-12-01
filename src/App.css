@@ -24,15 +24,15 @@ body {
   display: flex;
 }
 
-.tasklist-form-and-items {
-  width: 30%;
+.left {
+  width: 25%;
   padding: 16px;
   background-color: #313131;
 }
 
-.display-tasklist {
+.centre {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 60%;
   background-color: #3b3b3b;
 }

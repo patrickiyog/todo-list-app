@@ -1,15 +1,21 @@
-.delete-task-button-component {
-  min-height: 50px;
+.delete-task {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-end;
-}
-
-.delete-task-button {
-  height: 30px;
-  background-color: #d32f2f;
+  height: 24px;
+  padding: 8px 14px;
   color: #ffffff;
+  outline: none;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.delete-task-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.delete-task-text {
 }

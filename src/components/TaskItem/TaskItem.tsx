@@ -3,7 +3,9 @@ import { ListItem } from '../../interfaces/ListItem';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import { useAppContext } from '../../context/AppContext';
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { IconButton, Tooltip, ClickAwayListener } from '@mui/material';
 import './TaskItem.css';
+import TaskLabelForm from '../TaskLabelForm/TaskLabelForm';
 
 interface Props {
     task: ListItem | null;
@@ -14,6 +16,7 @@ const TaskItem = ({ task }: Props) => {
     const [taskName, setTaskName] = useState('');
     const [taskCompleted, setTaskCompleted] = useState(false);
     const [taskLabelColor, setTaskLabelColor] = useState('');
+    const [open, setOpen] = useState(false);
 
     const {
         taskLists,
@@ -120,6 +123,15 @@ const TaskItem = ({ task }: Props) => {
         }
     }
 
+    const handleTooltipOpen = () => {
+        setOpen(true);
+    }
+
+    const handleTooltipClose = () => {
+        setOpen(false);
+        console.log('bye');
+    }
+
     return (
         <div
             className="task"
@@ -145,13 +157,28 @@ const TaskItem = ({ task }: Props) => {
                         onBlur={onBlurChange}
                     />
                 </div>
-                <div className="three-dot-menu" >
-                    <div>
-                        <HiOutlineDotsVertical />
+                <ClickAwayListener onClickAway={handleTooltipClose}>
+                    <div className="three-dot-menu" >
+                        <div>
+                            <Tooltip
+                                title={<TaskLabelForm />}
+                                onClose={handleTooltipClose}
+                                open={open}
+                                disableFocusListener
+                                disableHoverListener
+                                disableTouchListener
+                                arrow
+                                placement="right"
+                            >
+                                <IconButton onClick={handleTooltipOpen}>
+                                    <HiOutlineDotsVertical />
+                                </IconButton>
+                            </Tooltip>
+                        </div>
                     </div>
-                </div>
+                </ClickAwayListener>
             </div>
-        </div>
+        </div >
     );
 }
 

@@ -2,12 +2,5 @@
   margin: 8px 0px;
   display: flex;
   flex-direction: row;
-}
-
-.task-label-radio {
-  display: flex;
-  align-items: center;
-  color: #aaaaaa;
-  margin-right: 24px;
   cursor: pointer;
 }
