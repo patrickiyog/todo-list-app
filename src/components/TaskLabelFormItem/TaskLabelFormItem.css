@@ -1,6 +1,12 @@
 .task-label-container {
-  margin: 8px 0px;
   display: flex;
   flex-direction: row;
   cursor: pointer;
+}
+
+.task-label-radio {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  font-size: 16px;
 }

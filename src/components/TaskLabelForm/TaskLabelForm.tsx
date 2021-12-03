@@ -59,19 +59,23 @@ const TaskLabelForm = () => {
 
     return (
         <div>
-            <div className="task-labels">
+            <div>
                 <TaskLabelFormItem
                     id="HIGH"
                     selected={labels.HIGH}
                     handleClick={handleClick}
                     labelName="High"
                 />
+            </div>
+            <div className="task-label-form-item-center">
                 <TaskLabelFormItem
                     id="MEDIUM"
                     selected={labels.MEDIUM}
                     handleClick={handleClick}
                     labelName="Medium"
                 />
+            </div>
+            <div>
                 <TaskLabelFormItem
                     id="LOW"
                     selected={labels.LOW}

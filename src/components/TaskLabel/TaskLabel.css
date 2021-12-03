@@ -1,10 +1,10 @@
 .task-label {
-  width: 50px;
+  width: 90px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.5px;
   color: #ffffff;
-  padding: 2px 12px;
+  padding: 3px 8px;
   border-radius: 100px;
   white-space: nowrap;
 }

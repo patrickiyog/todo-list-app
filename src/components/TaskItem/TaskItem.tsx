@@ -1,11 +1,11 @@
 import React, { useState, useEffect, ChangeEvent, SyntheticEvent } from 'react';
+import './TaskItem.css';
+import { useAppContext } from '../../context/AppContext';
 import { ListItem } from '../../interfaces/ListItem';
 import { MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
-import { useAppContext } from '../../context/AppContext';
-import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IconButton, Tooltip, ClickAwayListener } from '@mui/material';
-import './TaskItem.css';
-import TaskLabelForm from '../TaskLabelForm/TaskLabelForm';
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import TaskPanel from '../TaskPanel/TaskPanel';
 
 interface Props {
     task: ListItem | null;
@@ -129,7 +129,6 @@ const TaskItem = ({ task }: Props) => {
 
     const handleTooltipClose = () => {
         setOpen(false);
-        console.log('bye');
     }
 
     return (
@@ -155,13 +154,18 @@ const TaskItem = ({ task }: Props) => {
                         onClick={onInputClick}
                         onChange={onInputChange}
                         onBlur={onBlurChange}
+                        style={{
+                            color: taskCompleted ? '#a4a4a4' : '#ffffff',
+                            fontStyle: taskCompleted ? 'italic' : 'normal',
+                            textDecoration: taskCompleted ? 'line-through' : 'none',
+                        }}
                     />
                 </div>
                 <ClickAwayListener onClickAway={handleTooltipClose}>
                     <div className="three-dot-menu" >
                         <div>
                             <Tooltip
-                                title={<TaskLabelForm />}
+                                title={<TaskPanel clickAway={handleTooltipClose} />}
                                 onClose={handleTooltipClose}
                                 open={open}
                                 disableFocusListener

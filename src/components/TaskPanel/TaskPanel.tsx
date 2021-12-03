@@ -3,15 +3,18 @@ import './TaskPanel.css';
 import TaskLabelForm from '../TaskLabelForm/TaskLabelForm';
 import DeleteTaskButton from '../DeleteTaskButton/DeleteTaskButton';
 
-const TaskPanel = () => {
+interface Props {
+    clickAway: () => void;
+}
+
+const TaskPanel = ({ clickAway }: Props) => {
     return (
         <div className="task-panel-component">
-            <div className="task-panel-item-task-label-form">
-                <TaskLabelForm />
+            <TaskLabelForm />
+            <div className="horizontal-line-container">
+                <hr />
             </div>
-            <div className="task-panel-item-delete-button">
-                <DeleteTaskButton />
-            </div>
+            <DeleteTaskButton clickAway={clickAway} />
         </div>
     );
 }

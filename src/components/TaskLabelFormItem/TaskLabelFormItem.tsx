@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react';
 import { MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
+import './TaskLabelFormItem.css';
 import TaskLabel from '../TaskLabel/TaskLabel';
 
 interface Props {

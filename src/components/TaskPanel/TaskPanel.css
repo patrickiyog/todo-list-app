@@ -1,7 +1,8 @@
 .task-panel-component {
-  height: 100%;
+  height: 200px;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .task-panel-item-task-label-form {
