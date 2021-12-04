@@ -7,7 +7,7 @@ import { ListItem } from '../../interfaces/ListItem';
 
 const TaskList = () => {
 
-    const { taskLists, selectedTaskList } = useAppContext();
+    const { taskLists, setTaskLists, selectedTaskList } = useAppContext();
 
     const [input, setInput] = useState('');
     const [listName, setListName] = useState('');
@@ -40,22 +40,22 @@ const TaskList = () => {
         setInput(event.target.value);
     }
 
+    const changeTasklistName = () => {
+        if (taskLists) {
+            const newTasklists = { ...taskLists };
+            newTasklists[selectedTaskList].listName = input;
+            setTaskLists(newTasklists);
+        }
+    }
+
     const onKeyDown = (event: KeyboardEvent) => {
         if (event.key === 'Enter') {
-            if (input !== '') {
-
-            } else {
-                setInput(listName);
-            }
+            input !== '' ? changeTasklistName() : setInput(listName);
         }
     }
 
     const onBlurChange = (event: SyntheticEvent) => {
-        if (input !== '') {
-
-        } else {
-            setInput(listName);
-        }
+        input !== '' ? changeTasklistName() : setInput(listName);
     }
 
     const displayTaskList = () => {
