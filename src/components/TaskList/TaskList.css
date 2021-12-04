@@ -58,3 +58,17 @@
 .tasklists-empty .text {
   font-size: 26px;
 }
+
+.task-list-name-and-delete {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.delete-tasklist-icon-button {
+  display: flex;
+  align-items: center;
+  color: #d32f2f;
+  font-size: 20px;
+  cursor: pointer;
+}

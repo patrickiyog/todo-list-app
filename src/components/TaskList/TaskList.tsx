@@ -1,13 +1,19 @@
-import React, { useState, useEffect, ChangeEvent, KeyboardEvent, SyntheticEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from 'react';
 import './TaskList.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskForm from '../TaskForm/TaskForm';
 import { useAppContext } from '../../context/AppContext';
+import { MdDelete } from "react-icons/md";
 import { ListItem } from '../../interfaces/ListItem';
 
 const TaskList = () => {
 
-    const { taskLists, setTaskLists, selectedTaskList } = useAppContext();
+    const {
+        taskLists,
+        setTaskLists,
+        selectedTaskList,
+        setSelectedTaskList
+    } = useAppContext();
 
     const [input, setInput] = useState('');
     const [listName, setListName] = useState('');
@@ -45,6 +51,7 @@ const TaskList = () => {
             const newTasklists = { ...taskLists };
             newTasklists[selectedTaskList].listName = input;
             setTaskLists(newTasklists);
+            setListName('');
         }
     }
 
@@ -54,8 +61,19 @@ const TaskList = () => {
         }
     }
 
-    const onBlurChange = (event: SyntheticEvent) => {
+    const onBlurChange = () => {
         input !== '' ? changeTasklistName() : setInput(listName);
+    }
+
+    const removeTasklist = () => {
+        if (taskLists) {
+            const newTasklists = { ...taskLists };
+            delete newTasklists[selectedTaskList];
+            setTaskLists(newTasklists);
+            setSelectedTaskList('');
+            setInput('');
+            setListName('');
+        }
     }
 
     const displayTaskList = () => {
@@ -66,13 +84,24 @@ const TaskList = () => {
             return (
                 <>
                     <div className="task-list-name-details">
-                        <input
-                            className="task-list-name"
-                            value={input}
-                            onChange={onInputChange}
-                            onKeyDown={onKeyDown}
-                            onBlur={onBlurChange}
-                        />
+                        <div className="task-list-name-and-delete">
+                            <div>
+                                <input
+                                    className="task-list-name"
+                                    value={input}
+                                    onChange={onInputChange}
+                                    onKeyDown={onKeyDown}
+                                    onBlur={onBlurChange}
+                                    maxLength={20}
+                                />
+                            </div>
+                            <div
+                                className="delete-tasklist-icon-button"
+                                onClick={removeTasklist}
+                            >
+                                <MdDelete />
+                            </div>
+                        </div>
                         <div className="task-list-details">{numCompletedTask}</div>
                     </div>
                     <div className="task-list-list">
